@@ -26,3 +26,41 @@ function onMapClick(e) {
         .openOn(map);
 }
 map.on('click', onMapClick);
+
+function onEachFeature(feature, layer) {
+    // does this feature have a property named popupContent?
+    if (feature.properties && feature.properties.popupContent) {
+        layer.bindPopup(feature.properties.popupContent);
+    }
+}
+
+/*
+var geojsonFeatures = [ {
+    "type": "Feature",
+    "properties": {
+        "name": "Coors Field",
+        "amenity": "Baseball Stadium",
+        "popupContent": "uno"
+    },
+    "geometry": {
+        "type": "Point",
+        "coordinates": [9.293, 45.487]
+    }
+},
+{
+    "type": "Feature",
+    "properties": {
+        "name": "Coors Field",
+        "amenity": "Baseball Stadium",
+        "popupContent": "due"
+    },
+    "geometry": {
+        "type": "Point",
+        "coordinates": [9.301, 45.481]
+    }
+},
+];
+
+
+var myLayer = L.geoJson( geojsonFeatures, {onEachFeature: onEachFeature }).addTo(map);
+*/

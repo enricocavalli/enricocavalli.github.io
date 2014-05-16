@@ -19,10 +19,10 @@ function onLocationFound(e) {
 
 map.on('locationfound', onLocationFound);
 
-//function onMapClick(e) {
-//    popup
-//        .setLatLng(e.latlng)
-//        .setContent(e.latlng.toString())
-//        .openOn(map);
-//}
-//map.on('click', onMapClick);
+function onMapClick(e) {
+    popup
+        .setLatLng(e.latlng)
+        .setContent(e.latlng.toString())
+        .openOn(map);
+}
+map.on('click', onMapClick);

@@ -12,7 +12,7 @@ function onLocationFound(e) {
     var radius = e.accuracy / 2;
 
     L.marker(e.latlng).addTo(map)
-        .bindPopup("Accuracy: " + radius + " meters");
+        .bindPopup(e.latlng.toString() + ", " + "Accuracy: " + radius + " meters");
 
     L.circle(e.latlng, radius).addTo(map);
 }

@@ -35,7 +35,7 @@ function onLocationFound(e) {
         map.removeLayer(positionIndicator.marker);
     }
     positionIndicator.marker = new L.marker(e.latlng);
-    positionIndicator.circle = new L.circle(e.latlng, radius);
+    positionIndicator.circle = new L.circle(e.latlng, radius, { weight: 1 });
     map.addLayer(positionIndicator.marker);
     map.addLayer(positionIndicator.circle);
     positionIndicator.marker.bindPopup(e.latlng.toString() + ", " + "Accuracy: " + radius + " meters");

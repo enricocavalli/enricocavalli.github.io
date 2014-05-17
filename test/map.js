@@ -2,7 +2,7 @@ var map = L.map('map');
 
 
 var info = L.control();
-
+info.added = false;
 info.onAdd = function (map) {
     this._div = L.DomUtil.create('div', 'info'); // create a div with a class "info"
     this.update();
@@ -33,7 +33,10 @@ function onLocationFound(e) {
         .bindPopup(e.latlng.toString() + ", " + "Accuracy: " + radius + " meters");
 
     L.circle(e.latlng, radius).addTo(map);
+    if ( ! info.added ) {
     info.addTo(map);
+    info.added=true;
+    }
     displayBoundInformation();
 
     map.on('move',displayBoundInformation)
@@ -104,3 +107,5 @@ function displayBoundInformation() {
     o.center = coordToString(center);
     info.update(o);
 }
+
+setTimeout(function() { map.locate({setView: false}); },5000);

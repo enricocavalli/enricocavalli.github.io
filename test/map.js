@@ -11,7 +11,7 @@ info.onAdd = function (map) {
 
 info.update = function (props) {
  this._div.innerHTML = '<h4>Info</h4>' + 
- (props ? props.box : '');
+ (props ? 'Center: '+props.center+'<br>'+'Box: '+props.box : '');
 
 }
 
@@ -95,8 +95,10 @@ function displayBoundInformation() {
         var bounds=map.getBounds();
     var minll=bounds.getSouthWest();
     var maxll=bounds.getNorthEast();
+    var center=map.getCenter();
     var o = Object;
     o.box= coordToString(minll)+' '+coordToString(maxll);  
+    o.center = coordToString(center);
     info.update(o);
 }
 

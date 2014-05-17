@@ -1,5 +1,4 @@
 var map = L.map('map');
-
 var positionIndicator = Object;
 
 var info = L.control();
@@ -28,8 +27,6 @@ L.tileLayer('http://otile{s}.mqcdn.com/tiles/1.0.0/map/{z}/{x}/{y}.jpeg', {
 function onLocationFound(e) {
     var radius = e.accuracy / 2;
 
-   
-
     if ( positionIndicator.circle !== undefined ) { 
         map.removeLayer(positionIndicator.circle);
         map.removeLayer(positionIndicator.marker);
@@ -45,7 +42,7 @@ function onLocationFound(e) {
     info.added=true;
     }
     displayBoundInformation();
-
+map.fitBounds(positionIndicator.circle);
     map.on('move',displayBoundInformation)
 }
 
@@ -68,7 +65,6 @@ function onEachFeature(feature, layer) {
     }
 }
 
-/*
 var geojsonFeatures = [ {
     "type": "Feature",
     "properties": {
@@ -97,7 +93,8 @@ var geojsonFeatures = [ {
 
 
 var myLayer = L.geoJson( geojsonFeatures, {onEachFeature: onEachFeature }).addTo(map);
-*/
+map.fitBounds(myLayer.getBounds());
+
 
 function coordToString(c,p) {
     p = typeof p !== 'undefined' ? p : 3;
@@ -119,5 +116,5 @@ function trackMe() {
 setTimeout(function() { map.locate({setView: false}); trackMe(); },5000);
 }
 
-map.locate({setView: true, maxZoom: 16});
+//map.locate({setView: true, maxZoom: 16});
 trackMe();

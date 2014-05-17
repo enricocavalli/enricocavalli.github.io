@@ -40,60 +40,12 @@ function onLocationFound(e) {
     if ( ! info.added ) {
     info.addTo(map);
     info.added=true;
-    map.fitBounds([myLayer.getBounds(),positionIndicator.circle.getBounds()]);
     }
     displayBoundInformation();
     map.on('move',displayBoundInformation);
 }
 
 map.on('locationfound', onLocationFound);
-
-/*
-function onMapClick(e) {
-    popup
-        .setLatLng(e.latlng)
-        .setContent(e.latlng.toString())
-        .openOn(map);
-}
-map.on('click', onMapClick);
-*/
-
-function onEachFeature(feature, layer) {
-    // does this feature have a property named popupContent?
-    if (feature.properties && feature.properties.popupContent) {
-        layer.bindPopup(feature.properties.popupContent);
-    }
-}
-
-var geojsonFeatures = [ {
-    "type": "Feature",
-    "properties": {
-        "name": "Coors Field",
-        "amenity": "Baseball Stadium",
-        "popupContent": "uno"
-    },
-    "geometry": {
-        "type": "Point",
-        "coordinates": [9.293, 45.487]
-    }
-},
-{
-    "type": "Feature",
-    "properties": {
-        "name": "Coors Field",
-        "amenity": "Baseball Stadium",
-        "popupContent": "due"
-    },
-    "geometry": {
-        "type": "Point",
-        "coordinates": [9.301, 45.481]
-    }
-},
-];
-
-
-var myLayer = L.geoJson( geojsonFeatures, {onEachFeature: onEachFeature }).addTo(map);
-map.fitBounds(myLayer.getBounds());
 
 
 function coordToString(c,p) {
@@ -116,5 +68,5 @@ function trackMe() {
 setTimeout(function() { map.locate({setView: false}); trackMe(); },5000);
 }
 
-//map.locate({setView: true, maxZoom: 16});
+map.locate({setView: true, maxZoom: 16});
 trackMe();

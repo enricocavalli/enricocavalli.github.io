@@ -1,5 +1,22 @@
 var map = L.map('map');
 
+
+var info = L.control();
+
+info.onAdd = function (map) {
+    this._div = L.DomUtil.create('div', 'info'); // create a div with a class "info"
+    this.update();
+    return this._div;
+};
+
+info.update = function (props) {
+ this._div.innerHTML = '<h4>Info</h4>' + 
+ (props ? props.box : '');
+
+}
+
+info.addTo(map);
+
 // add an OpenStreetMap tile layer
 //L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
 L.tileLayer('http://otile{s}.mqcdn.com/tiles/1.0.0/map/{z}/{x}/{y}.jpeg', {
@@ -16,6 +33,7 @@ function onLocationFound(e) {
         .bindPopup(e.latlng.toString() + ", " + "Accuracy: " + radius + " meters");
 
     L.circle(e.latlng, radius).addTo(map);
+    displayBoundInformation();
 }
 
 map.on('locationfound', onLocationFound);
@@ -67,3 +85,17 @@ var geojsonFeatures = [ {
 
 var myLayer = L.geoJson( geojsonFeatures, {onEachFeature: onEachFeature }).addTo(map);
 */
+
+function coordToString(c,p) {
+    p = typeof p !== 'undefined' ? p : 3;
+    return c.lat.toFixed(p)+', '+c.lng.toFixed(p)
+}
+
+function displayBoundInformation() {
+        var bounds=map.getBounds();
+    var minll=bounds.getSouthWest();
+    var maxll=bounds.getNorthEast();
+    var o = Object;
+    o.box= coordToString(minll)+' '+coordToString(maxll);  
+    info.update(o);
+}

@@ -43,7 +43,7 @@ function onLocationFound(e) {
     map.fitBounds([myLayer.getBounds(),positionIndicator.circle.getBounds()]);
     }
     displayBoundInformation();
-    map.on('move',displayBoundInformation)
+    map.on('move',displayBoundInformation);
 }
 
 map.on('locationfound', onLocationFound);

@@ -1,5 +1,6 @@
 var map = L.map('map');
 
+var positionMarker;
 
 var info = L.control();
 info.added = false;
@@ -32,7 +33,9 @@ function onLocationFound(e) {
     L.marker(e.latlng).addTo(map)
         .bindPopup(e.latlng.toString() + ", " + "Accuracy: " + radius + " meters");
 
-    L.circle(e.latlng, radius).addTo(map);
+    if ( positionMarker !== undefined ) { map.removeLayer(positionMarker); }
+    positionMarker = new L.circle(e.latlng, radius).addTo(map);
+    map.addLayer(positionMarker);
     if ( ! info.added ) {
     info.addTo(map);
     info.added=true;

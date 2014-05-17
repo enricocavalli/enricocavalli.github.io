@@ -27,7 +27,6 @@ L.tileLayer('http://otile{s}.mqcdn.com/tiles/1.0.0/map/{z}/{x}/{y}.jpeg', {
 map.locate({setView: true, maxZoom: 16});
 
 function onLocationFound(e) {
-    alert ('accuracy: '+ e.accuracy/2);
     var radius = e.accuracy / 2;
 
     L.marker(e.latlng).addTo(map)

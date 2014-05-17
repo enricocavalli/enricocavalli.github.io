@@ -1,5 +1,4 @@
 var map = L.map('map');
-var popup = L.popup();
 
 // add an OpenStreetMap tile layer
 L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {

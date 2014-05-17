@@ -115,9 +115,9 @@ function displayBoundInformation() {
     info.update(o);
 }
 
-function locateMe() {
-setTimeout(function() { map.locate({setView: false}); locateMe(); },5000);
+function trackMe() {
+setTimeout(function() { map.locate({setView: false}); trackMe(); },5000);
 }
 
 map.locate({setView: true, maxZoom: 16});
-locateMe();
+trackMe();

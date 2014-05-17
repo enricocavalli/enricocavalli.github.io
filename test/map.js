@@ -19,6 +19,7 @@ function onLocationFound(e) {
 
 map.on('locationfound', onLocationFound);
 
+/*
 function onMapClick(e) {
     popup
         .setLatLng(e.latlng)
@@ -26,6 +27,7 @@ function onMapClick(e) {
         .openOn(map);
 }
 map.on('click', onMapClick);
+*/
 
 function onEachFeature(feature, layer) {
     // does this feature have a property named popupContent?

@@ -40,9 +40,9 @@ function onLocationFound(e) {
     if ( ! info.added ) {
     info.addTo(map);
     info.added=true;
+    map.fitBounds([myLayer.getBounds(),positionIndicator.circle.getBounds()]);
     }
     displayBoundInformation();
-map.fitBounds(positionIndicator.circle);
     map.on('move',displayBoundInformation)
 }
 

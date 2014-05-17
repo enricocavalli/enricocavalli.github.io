@@ -99,3 +99,5 @@ function displayBoundInformation() {
     o.box= coordToString(minll)+' '+coordToString(maxll);  
     info.update(o);
 }
+
+map.on('move',displayBoundInformation)

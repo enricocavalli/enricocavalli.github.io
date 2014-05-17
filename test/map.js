@@ -1,6 +1,6 @@
 var map = L.map('map');
 
-var positionMarker;
+var positionIndicator = Object;
 
 var info = L.control();
 info.added = false;
@@ -30,12 +30,18 @@ map.locate({setView: true, maxZoom: 16});
 function onLocationFound(e) {
     var radius = e.accuracy / 2;
 
-    L.marker(e.latlng).addTo(map)
-        .bindPopup(e.latlng.toString() + ", " + "Accuracy: " + radius + " meters");
+   
 
-    if ( positionMarker !== undefined ) { map.removeLayer(positionMarker); }
-    positionMarker = new L.circle(e.latlng, radius).addTo(map);
-    map.addLayer(positionMarker);
+    if ( positionIndicator.circle !== undefined ) { 
+        map.removeLayer(positionIndicator.circle);
+        map.removeLayer(positionIndicator.marker);
+    }
+    positionIndicator.marker = new L.marker(e.latlng);
+    positionIndicator.circle = new L.circle(e.latlng, radius);
+    map.addLayer(positionIndicator.marker);
+    map.addLayer(positionIndicator.circle);
+    positionIndicator.marker.bindPopup(e.latlng.toString() + ", " + "Accuracy: " + radius + " meters");
+
     if ( ! info.added ) {
     info.addTo(map);
     info.added=true;

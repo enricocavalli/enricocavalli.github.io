@@ -117,4 +117,8 @@ function displayBoundInformation() {
     info.update(o);
 }
 
-setTimeout(function() { map.locate({setView: false}); },5000);
+function locateMe() {
+setTimeout(function() { map.locate({setView: false}); locateMe(); },5000);
+}
+
+locateMe();

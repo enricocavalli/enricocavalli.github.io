@@ -1,5 +1,4 @@
 var map = L.map('map');
-
 var positionIndicator = Object;
 
 var info = L.control();
@@ -28,8 +27,6 @@ L.tileLayer('http://otile{s}.mqcdn.com/tiles/1.0.0/map/{z}/{x}/{y}.jpeg', {
 function onLocationFound(e) {
     var radius = e.accuracy / 2;
 
-   
-
     if ( positionIndicator.circle !== undefined ) { 
         map.removeLayer(positionIndicator.circle);
         map.removeLayer(positionIndicator.marker);
@@ -45,59 +42,11 @@ function onLocationFound(e) {
     info.added=true;
     }
     displayBoundInformation();
-
-    map.on('move',displayBoundInformation)
+    map.on('move',displayBoundInformation);
 }
 
 map.on('locationfound', onLocationFound);
 
-/*
-function onMapClick(e) {
-    popup
-        .setLatLng(e.latlng)
-        .setContent(e.latlng.toString())
-        .openOn(map);
-}
-map.on('click', onMapClick);
-*/
-
-function onEachFeature(feature, layer) {
-    // does this feature have a property named popupContent?
-    if (feature.properties && feature.properties.popupContent) {
-        layer.bindPopup(feature.properties.popupContent);
-    }
-}
-
-/*
-var geojsonFeatures = [ {
-    "type": "Feature",
-    "properties": {
-        "name": "Coors Field",
-        "amenity": "Baseball Stadium",
-        "popupContent": "uno"
-    },
-    "geometry": {
-        "type": "Point",
-        "coordinates": [9.293, 45.487]
-    }
-},
-{
-    "type": "Feature",
-    "properties": {
-        "name": "Coors Field",
-        "amenity": "Baseball Stadium",
-        "popupContent": "due"
-    },
-    "geometry": {
-        "type": "Point",
-        "coordinates": [9.301, 45.481]
-    }
-},
-];
-
-
-var myLayer = L.geoJson( geojsonFeatures, {onEachFeature: onEachFeature }).addTo(map);
-*/
 
 function coordToString(c,p) {
     p = typeof p !== 'undefined' ? p : 3;

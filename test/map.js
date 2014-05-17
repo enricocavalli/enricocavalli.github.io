@@ -15,7 +15,7 @@ info.update = function (props) {
 
 }
 
-info.addTo(map);
+
 
 // add an OpenStreetMap tile layer
 //L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
@@ -33,6 +33,7 @@ function onLocationFound(e) {
         .bindPopup(e.latlng.toString() + ", " + "Accuracy: " + radius + " meters");
 
     L.circle(e.latlng, radius).addTo(map);
+    info.addTo(map);
     displayBoundInformation();
 }
 

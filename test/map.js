@@ -35,6 +35,8 @@ function onLocationFound(e) {
     L.circle(e.latlng, radius).addTo(map);
     info.addTo(map);
     displayBoundInformation();
+
+    map.on('move',displayBoundInformation)
 }
 
 map.on('locationfound', onLocationFound);
@@ -102,5 +104,3 @@ function displayBoundInformation() {
     o.center = coordToString(center);
     info.update(o);
 }
-
-map.on('move',displayBoundInformation)

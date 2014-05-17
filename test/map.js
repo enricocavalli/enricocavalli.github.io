@@ -25,8 +25,6 @@ L.tileLayer('http://otile{s}.mqcdn.com/tiles/1.0.0/map/{z}/{x}/{y}.jpeg', {
     attribution: 'Tiles by <a href="http://www.mapquest.com/">MapQuest</a> &mdash; Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>'
 }).addTo(map);
 
-map.locate({setView: true, maxZoom: 16});
-
 function onLocationFound(e) {
     var radius = e.accuracy / 2;
 
@@ -121,4 +119,5 @@ function locateMe() {
 setTimeout(function() { map.locate({setView: false}); locateMe(); },5000);
 }
 
+map.locate({setView: true, maxZoom: 16});
 locateMe();

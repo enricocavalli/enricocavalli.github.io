@@ -57,6 +57,7 @@ map.on('locationfound', function(e) {
 // on a production site, omit the "lc = "!
 lc = L.control.locate({
 	follow: true,
+  position: 'topright',
 	keepCurrentZoomLevel: true,
 	onLocationError: function(err) { },
 }).addTo(map);

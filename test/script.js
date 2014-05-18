@@ -79,6 +79,7 @@ function success(pos) {
   var crd = pos.coords;
   var currentdate = new Date();
     console.log(currentdate+': '+crd.latitude+' '+crd.longitude);
+    console.log(JSON.stringify(pos));
 };
 
 function error(err) {

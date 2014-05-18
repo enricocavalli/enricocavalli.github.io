@@ -1,0 +1,3 @@
+[submodule "leaflet-locatecontrol"]
+	path = leaflet-locatecontrol
+	url = https://github.com/domoritz/leaflet-locatecontrol

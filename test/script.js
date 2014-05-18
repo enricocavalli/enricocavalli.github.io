@@ -24,7 +24,7 @@ info.update = function (props) {
 var map = new L.Map('map', {
     layers: [osm],
     center: [45.569, 9.178],
-    zoom: 10,
+    zoom: 14,
 	zoomControl: true
 });
 

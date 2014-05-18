@@ -65,7 +65,7 @@ function displayBoundInformation() {
 }
 
 function trackMe() {
-setTimeout(function() { var follow = document.URL.indexOf('#track') >0 ? true: false; map.locate({setView: follow}); trackMe(); },5000);
+setTimeout(function() { var follow = document.URL.indexOf('#track') >0 ? true: false; map.locate({setView: true }); trackMe(); },5000);
 }
 
 map.locate({setView: true, maxZoom: 16});

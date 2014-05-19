@@ -1,5 +1,35 @@
 var currPosition;
 
+var pts = [];               // All the GPS points
+var distIndex = 1;          // Index for distance calculation
+var totalDistance = 0.0;    // Total distance travelled
+var currentLat = 0.0;       // Current latitude
+var currentLng = 0.0;       // Current longitude
+var accuracy = 0.0;         // Current accuracy in miles
+var minDistance = 0.05;     // Minimum distance (miles) between collected points.
+
+
+function distance (lat1,lng1,lat2,lng2)
+{
+var radius = 6371; // km
+  var deltaLat = ToRadians(lat2 - lat1);
+   var deltaLng = ToRadians(lng2 - lng1);
+   var sinLat = Math.sin(0.5*deltaLat);
+   var sinLng = Math.sin(0.5*deltaLng);
+   var cosLat1 = Math.cos(ToRadians(lat1));
+   var cosLat2 = Math.cos(ToRadians(lat2));
+   var h1 = sinLat*sinLat + cosLat1*cosLat2*sinLng*sinLng;
+   var h2 = Math.sqrt(h1);
+   var h3 = 2*Math.asin(Math.min(1, h2));
+   var distance = radius * h3;
+
+   return distance;
+}
+
+function ToRadians(degree) {
+   return (degree * (Math.PI / 180));
+}
+
 var options = {
   enableHighAccuracy: true,
   timeout: 5000,
@@ -7,7 +37,38 @@ var options = {
 };
 
 function updatePosition( position ){
-    currPosition = position;
+    if(position.coords.accuracy/500 > 0.5) {  // 500mt
+        return;
+    }
+    var dist = distance(currentLat,currentLng,position.coords.latitude, position.coords.longitude);
+
+    if (dist < minDistance) {
+        //ignore
+        return;
+    }
+    pts.push(position);
+    accuracy=position.coords.accuracy/500;
+    currentLat=position.coords.latitude;
+    currentLng=position.coords.longitude;
+    var pos = new Object();
+    pos.coords = new Object();
+    pos.timestamp = position.timestamp;
+
+
+        for (var name in position.coords ) {
+            pos.coords[name]=position.coords[name];
+        }
+
+        
+        console.log(JSON.stringify(pos));
+        /*
+        jQuery.ajax({
+            type: "GET", 
+            url:  "http://cici.cilea.it/", 
+            data: JSON.stringify(position), 
+            cache: false
+        });
+     */
 }
 
 function errorCallback(error) {
@@ -26,30 +87,6 @@ function errorCallback(error) {
     console.warn(msg);
 }
 
-setInterval(function() {
-	navigator.geolocation.getCurrentPosition(function(position) {
-		var pos = new Object();
-		pos.coords = new Object();
-		pos.timestamp = position.timestamp;
-
-
-		for (var name in position.coords ) {
-			pos.coords[name]=position.coords[name];
-		}
-
-		
-        console.log(JSON.stringify(pos));
-        /*
-        jQuery.ajax({
-            type: "GET", 
-            url:  "http://cici.cilea.it/", 
-            data: JSON.stringify(position), 
-            cache: false
-        });
-     */
- 	} , errorCallback,options)
-},2000);
-
-//var watchID = navigator.geolocation.watchPosition(function(position) {
-  //  updatePosition(position);
-//}); 
+var watchID = navigator.geolocation.watchPosition(function(position) {
+    updatePosition(position);
+},errorCallback,options); 

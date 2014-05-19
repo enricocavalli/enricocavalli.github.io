@@ -5,8 +5,8 @@ var distIndex = 1;          // Index for distance calculation
 var totalDistance = 0.0;    // Total distance travelled
 var currentLat = 0.0;       // Current latitude
 var currentLng = 0.0;       // Current longitude
-var accuracy = 0.0;         // Current accuracy in miles
-var minDistance = 0.05;     // Minimum distance (miles) between collected points.
+var accuracy = 0.0;         // Current accuracy in km
+var minDistance = 0.05;     // Minimum distance (km) between collected points.
 
 
 function distance (lat1,lon1,lat2,lon2)

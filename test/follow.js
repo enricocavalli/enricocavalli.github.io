@@ -11,7 +11,7 @@ var minDistance = 0.05;     // Minimum distance (miles) between collected points
 
 function distance (lat1,lon1,lat2,lon2)
 {
-var radius = 6371; // km
+var R = 6371; // km
 var x1 = lat2-lat1;
 var dLat = x1.toRad();  
 var x2 = lon2-lon1;

@@ -9,7 +9,7 @@ var accuracy = 0.0;         // Current accuracy in miles
 var minDistance = 0.05;     // Minimum distance (miles) between collected points.
 
 
-function distance (lat1,lng1,lat2,lng2)
+function distance (lat1,lon1,lat2,lon2)
 {
 var radius = 6371; // km
 var x1 = lat2-lat1;

@@ -35,7 +35,7 @@ setInterval(function() {
         });
      */
  	} , errorCallback,options)
-},2000);
+},7000);
 
 //var watchID = navigator.geolocation.watchPosition(function(position) {
   //  updatePosition(position);

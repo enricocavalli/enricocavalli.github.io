@@ -12,15 +12,18 @@ function updatePosition( position ){
 
 function errorCallback(error) {
     var msg = "Can't get your location. Error = ";
-    if (error.code == 1)
+    if (error.code == 1) {
         msg += "PERMISSION_DENIED";
-    else if (error.code == 2)
+        alert(msg);
+    }
+
+    if (error.code == 2)
         msg += "POSITION_UNAVAILABLE";
     else if (error.code == 3)
         msg += "TIMEOUT";
     msg += ", msg = "+error.message;
 
-    alert(msg);
+    console.warn(msg);
 }
 
 setInterval(function() {

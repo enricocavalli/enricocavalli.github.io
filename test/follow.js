@@ -23,12 +23,8 @@ function errorCallback(error) {
     alert(msg);
 }
 
-
-navigator.geolocation.getCurrentPosition(function(position) {
-    updatePosition(position);
-    setInterval(function(){
-        var lat = currPosition.coords.latitude;
-        var lng = currPosition.coords.longitude;
+setInterval(function() {
+	navigator.geolocation.getCurrentPosition(function(position) {
         console.log(JSON.stringify(position));
         /*
         jQuery.ajax({
@@ -38,8 +34,8 @@ navigator.geolocation.getCurrentPosition(function(position) {
             cache: false
         });
      */
- 	},  2000);
-}, errorCallback,options); 
+ 	} , errorCallback,options)
+},2000);
 
 //var watchID = navigator.geolocation.watchPosition(function(position) {
   //  updatePosition(position);

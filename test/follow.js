@@ -61,14 +61,14 @@ function updatePosition( position ){
 
         
         console.log(JSON.stringify(pos));
-        /*
         jQuery.ajax({
-            type: "GET", 
-            url:  "http://cici.cilea.it/", 
-            data: JSON.stringify(position), 
-            cache: false
+            type: "POST", 
+            url:  "http://cici.cilea.it/log.php", 
+            data: JSON.stringify(pos), 
+            cache: false,
+            contentType: 'application/json',        
+            dataType: 'json'
         });
-     */
 }
 
 function errorCallback(error) {

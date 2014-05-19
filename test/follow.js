@@ -65,7 +65,9 @@ function updatePosition( position ){
             type: "POST", 
             url:  "http://cici.cilea.it/log.php", 
             data: JSON.stringify(pos), 
-            cache: false
+            cache: false,
+            contentType: 'application/json',        
+            dataType: 'json'
         });
 }
 

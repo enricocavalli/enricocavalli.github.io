@@ -1,18 +1,35 @@
-options = {
-  enableHighAccuracy: true,
-  timeout: 5000,
-  maximumAge: 0
-};
+var currPosition;
+navigator.geolocation.getCurrentPosition(function(position) {
+    updatePosition(position);
+    setInterval(function(){
+        var lat = currPosition.coords.latitude;
+        var lng = currPosition.coords.longitude;
+        jQuery.ajax({
+            type: "POST", 
+            url:  "myURL/location.php", 
+            data: JSON.stringify(position), 
+            cache: false
+        });
+    }, 1000);
+}, errorCallback); 
 
-function success(pos) {
-  var crd = pos.coords;
-  var currentdate = new Date();
-    console.log(currentdate+': '+crd.latitude+' '+crd.longitude);
-    console.log(JSON.stringify(pos));
-};
+var watchID = navigator.geolocation.watchPosition(function(position) {
+    updatePosition(position);
+});
 
-function error(err) {
-  console.warn('ERROR(' + err.code + '): ' + err.message);
-};
+function updatePosition( position ){
+    currPosition = position;
+}
 
-navigator.geolocation.watchPosition(success, error, options)
+function errorCallback(error) {
+    var msg = "Can't get your location. Error = ";
+    if (error.code == 1)
+        msg += "PERMISSION_DENIED";
+    else if (error.code == 2)
+        msg += "POSITION_UNAVAILABLE";
+    else if (error.code == 3)
+        msg += "TIMEOUT";
+    msg += ", msg = "+error.message;
+
+    alert(msg);
+}

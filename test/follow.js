@@ -39,15 +39,14 @@ var options = {
 function updatePosition( position ){
 
     if(position.coords.accuracy/500 > 0.5) {  // 500mt
-      alert('not enough accuracy');
         return;
     }
     var dist = distance(currentLat,currentLng,position.coords.latitude, position.coords.longitude);
 
     if (dist < minDistance) {
-        alert('dist: '+dist);
         return;
     }
+    
     pts.push(position);
     accuracy=position.coords.accuracy/500;
     currentLat=position.coords.latitude;

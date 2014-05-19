@@ -12,22 +12,21 @@ var minDistance = 0.05;     // Minimum distance (miles) between collected points
 function distance (lat1,lng1,lat2,lng2)
 {
 var radius = 6371; // km
-  var deltaLat = ToRadians(lat2 - lat1);
-   var deltaLng = ToRadians(lng2 - lng1);
-   var sinLat = Math.sin(0.5*deltaLat);
-   var sinLng = Math.sin(0.5*deltaLng);
-   var cosLat1 = Math.cos(ToRadians(lat1));
-   var cosLat2 = Math.cos(ToRadians(lat2));
-   var h1 = sinLat*sinLat + cosLat1*cosLat2*sinLng*sinLng;
-   var h2 = Math.sqrt(h1);
-   var h3 = 2*Math.asin(Math.min(1, h2));
-   var distance = radius * h3;
+var x1 = lat2-lat1;
+var dLat = x1.toRad();  
+var x2 = lon2-lon1;
+var dLon = x2.toRad();  
+var a = Math.sin(dLat/2) * Math.sin(dLat/2) + 
+                Math.cos(lat1.toRad()) * Math.cos(lat2.toRad()) * 
+                Math.sin(dLon/2) * Math.sin(dLon/2);  
+var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a)); 
+var d = R * c; 
 
-   return distance;
+   return d;
 }
 
-function ToRadians(degree) {
-   return (degree * (Math.PI / 180));
+Number.prototype.toRad = function() {
+   return this * Math.PI / 180;
 }
 
 var options = {

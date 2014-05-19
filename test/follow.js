@@ -1,5 +1,11 @@
 var currPosition;
 
+var options = {
+  enableHighAccuracy: true,
+  timeout: 5000,
+  maximumAge: 0
+};
+
 function updatePosition( position ){
     currPosition = position;
 }
@@ -33,7 +39,7 @@ navigator.geolocation.getCurrentPosition(function(position) {
         });
      */
  	},  2000);
-}, errorCallback); 
+}, errorCallback,options); 
 
 //var watchID = navigator.geolocation.watchPosition(function(position) {
   //  updatePosition(position);

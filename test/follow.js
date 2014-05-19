@@ -1,21 +1,4 @@
 var currPosition;
-navigator.geolocation.getCurrentPosition(function(position) {
-    updatePosition(position);
-    setInterval(function(){
-        var lat = currPosition.coords.latitude;
-        var lng = currPosition.coords.longitude;
-        jQuery.ajax({
-            type: "POST", 
-            url:  "myURL/location.php", 
-            data: JSON.stringify(position), 
-            cache: false
-        });
-    }, 1000);
-}, errorCallback); 
-
-var watchID = navigator.geolocation.watchPosition(function(position) {
-    updatePosition(position);
-});
 
 function updatePosition( position ){
     currPosition = position;
@@ -33,3 +16,25 @@ function errorCallback(error) {
 
     alert(msg);
 }
+
+
+navigator.geolocation.getCurrentPosition(function(position) {
+    updatePosition(position);
+    setInterval(function(){
+        var lat = currPosition.coords.latitude;
+        var lng = currPosition.coords.longitude;
+        console.log(JSON.stringify(position));
+        /*
+        jQuery.ajax({
+            type: "GET", 
+            url:  "http://cici.cilea.it/", 
+            data: JSON.stringify(position), 
+            cache: false
+        });
+     */
+ 	},  2000);
+}, errorCallback); 
+
+//var watchID = navigator.geolocation.watchPosition(function(position) {
+  //  updatePosition(position);
+//}); 

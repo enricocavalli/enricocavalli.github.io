@@ -25,7 +25,17 @@ function errorCallback(error) {
 
 setInterval(function() {
 	navigator.geolocation.getCurrentPosition(function(position) {
-        console.log(JSON.stringify(position));
+		var pos = new Object();
+		pos.coords = new Object();
+		pos.timestamp = position.timestamp;
+
+
+		for (var name in position.coords ) {
+			pos.coords[name]=position.coords[name];
+		}
+
+		
+        console.log(JSON.stringify(pos));
         /*
         jQuery.ajax({
             type: "GET", 
@@ -35,7 +45,7 @@ setInterval(function() {
         });
      */
  	} , errorCallback,options)
-},7000);
+},2000);
 
 //var watchID = navigator.geolocation.watchPosition(function(position) {
   //  updatePosition(position);

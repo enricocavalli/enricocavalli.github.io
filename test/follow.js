@@ -37,6 +37,7 @@ var options = {
 };
 
 function updatePosition( position ){
+  console.log('updating position');
     if(position.coords.accuracy/500 > 0.5) {  // 500mt
       console.log('not enough accuracy');
         return;

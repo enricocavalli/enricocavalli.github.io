@@ -168,3 +168,24 @@ for (var p in pts) {
 }
 
 console.log(JSON.stringify(geojson));
+
+var osmUrl='http://otile{s}.mqcdn.com/tiles/1.0.0/map/{z}/{x}/{y}.jpeg';
+var osmAttrib='Map data © <a href="http://osm.org/copyright">OpenStreetMap</a> contributors';
+var subDomains = '1234';
+var osm = new L.TileLayer(osmUrl, {
+        attribution: osmAttrib,
+        subdomains: subDomains
+});
+
+var map = new L.Map('map', {
+    layers: [osm],
+    center: [45.471, 9.178],
+    zoom: 16,
+	zoomControl: true
+});
+
+for (var p in pts) {
+ if (pts[p].coords.latitude !== null && pts[p].coords.longitude !== null ) 
+	L.marker([pts[p].coords.latitude,pts[p].coords.longitude]).addTo(map);
+
+}

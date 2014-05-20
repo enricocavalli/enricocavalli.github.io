@@ -182,8 +182,16 @@ var map = new L.Map('map', {
 	zoomControl: true
 });
 
+var markers=[];
+
 for (var p in pts) {
  if (pts[p].coords.latitude !== null && pts[p].coords.longitude !== null ) 
-	L.marker([pts[p].coords.latitude,pts[p].coords.longitude]).addTo(map);
+	markers.push(L.marker([pts[p].coords.latitude,pts[p].coords.longitude]));
 
 }
+
+var group = new L.featureGroup(markers);
+
+ map.fitBounds(group.getBounds());
+
+ group.addTo(map);

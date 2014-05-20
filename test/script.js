@@ -24,7 +24,7 @@ info.update = function (props) {
 var map = new L.Map('map', {
     layers: [osm],
     center: [45.471, 9.178],
-    zoom: 13,
+    zoom: 16,
 	zoomControl: true
 });
 
@@ -66,3 +66,5 @@ map.on('startfollowing', function() {
 }).on('stopfollowing', function() {
     map.off('dragstart', lc.stopFollowing);
 });
+
+lc.locate();

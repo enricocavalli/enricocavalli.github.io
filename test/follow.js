@@ -59,7 +59,7 @@ function updatePosition( position ){
             pos.coords[name]=position.coords[name];
         }
 
-        /*
+        
         console.log(JSON.stringify(pos));
         jQuery.ajax({
             type: "POST", 
@@ -68,7 +68,7 @@ function updatePosition( position ){
             cache: false,
             contentType: 'application/json',        
             dataType: 'json'
-        });*/
+        });
 }
 
 function errorCallback(error) {

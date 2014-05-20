@@ -53,14 +53,14 @@ function updatePosition( position ){
     var pos = new Object();
     pos.coords = new Object();
     pos.timestamp = position.timestamp;
-    $.notify(position.coords.latitude+' '+position.coords.longitude,"info",{ authoHide: true} );
+   // $.notify(position.coords.latitude+' '+position.coords.longitude,"info",{ authoHide: true} );
 
         for (var name in position.coords ) {
             pos.coords[name]=position.coords[name];
         }
 
         
-        console.log(JSON.stringify(pos));
+       // console.log(JSON.stringify(pos));
         jQuery.ajax({
             type: "POST", 
             url:  "http://cici.cilea.it/log.php", 

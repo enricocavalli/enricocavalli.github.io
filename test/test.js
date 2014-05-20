@@ -167,8 +167,6 @@ for (var p in pts) {
 	geojson.geometries.push(position);
 }
 
-console.log(JSON.stringify(geojson));
-
 var osmUrl='http://otile{s}.mqcdn.com/tiles/1.0.0/map/{z}/{x}/{y}.jpeg';
 var osmAttrib='Map data © <a href="http://osm.org/copyright">OpenStreetMap</a> contributors';
 var subDomains = '1234';

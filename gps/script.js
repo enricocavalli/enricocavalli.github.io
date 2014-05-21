@@ -20,7 +20,6 @@ info.update = function (props) {
  (props ? 'Center: '+props.center+'<br>'+'Box: '+props.box : '');
 
 }
-
 var map = new L.Map('map', {
     layers: [osm],
     center: [45.471, 9.178],
@@ -48,6 +47,9 @@ map.on('locationfound', function(e) {
   if ( ! info.added ) {
     info.addTo(map);
     info.added=true;
+    $(".info").click( function() { 
+            window.location.href = "history.html"; 
+    });
     }
     displayBoundInformation();
     map.on('move', displayBoundInformation);

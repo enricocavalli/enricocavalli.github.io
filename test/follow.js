@@ -1,8 +1,7 @@
 var currPosition;
 
-var pts = [];               // All the GPS points
 var localStorageKey="io.github.enricocavalli.gps";
-pts = JSON.parse(localStorage.getItem(localStorageKey));
+var pts = JSON.parse(localStorage.getItem(localStorageKey)) || [] ;
 
 var distIndex = 1;          // Index for distance calculation
 var totalDistance = 0.0;    // Total distance travelled

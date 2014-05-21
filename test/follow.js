@@ -1,6 +1,9 @@
 var currPosition;
 
 var pts = [];               // All the GPS points
+var localStorageKey="io.github.enricocavalli.gps";
+pts = JSON.parse(localStorage.getItem(localStorageKey));
+
 var distIndex = 1;          // Index for distance calculation
 var totalDistance = 0.0;    // Total distance travelled
 var currentLat = 0.0;       // Current latitude
@@ -58,7 +61,7 @@ function updatePosition( position ){
             pos.coords[name]=position.coords[name];
         }
 
-        
+    localStorage.setItem(localStorageKey, JSON.stringify(pts));
        // console.log(JSON.stringify(pos));
         jQuery.ajax({
             type: "POST", 

@@ -6,6 +6,9 @@ var osm = new L.TileLayer(osmUrl, {
         subdomains: subDomains
 });
 
+var historyToggle=false;
+var markers= L.featureGroup();
+
 
 var info = L.control();
 info.added = false;
@@ -32,6 +35,25 @@ function coordToString(c,p) {
     return c.lat.toFixed(p)+', '+c.lng.toFixed(p)
 }
 
+function showHistory() {
+if (historyToggle ) {
+    historyToggle=false;
+    map.removeLayer(markers);
+} else {
+    historyToggle=true;
+lc.stopFollowing();
+
+for (var p in pts) {
+   if (pts[p].coords.latitude !== null && pts[p].coords.longitude !== null ) 
+   markers.addLayer(L.marker([pts[p].coords.latitude,pts[p].coords.longitude]));
+}
+
+ map.addLayer(markers);
+ map.fitBounds(markers.getBounds());
+
+  }
+}
+
 function displayBoundInformation() {
  var bounds=map.getBounds();
     var minll=bounds.getSouthWest();
@@ -47,9 +69,7 @@ map.on('locationfound', function(e) {
   if ( ! info.added ) {
     info.addTo(map);
     info.added=true;
-    $(".info").click( function() { 
-            window.location.href = "history.html"; 
-    });
+    $(".info").click( showHistory );
     }
     displayBoundInformation();
     map.on('move', displayBoundInformation);

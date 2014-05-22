@@ -49,7 +49,7 @@ for (var p in pts) {
 }
 
  map.addLayer(markers);
- map.fitBounds(markers.getBounds());
+// map.fitBounds(markers.getBounds());
 
   }
 }

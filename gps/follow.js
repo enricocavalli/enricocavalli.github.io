@@ -64,7 +64,7 @@ function updatePosition( position ){
     if (dist < minDistance) {
         return;
     }
-    console.log(position);
+
     pts.push(position);
     accuracy=position.coords.accuracy/500;
     currentLat=position.coords.latitude;

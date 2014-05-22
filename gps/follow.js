@@ -11,7 +11,7 @@ var accuracy = 0.0;         // Current accuracy in km
 var minDistance = 0.05;     // Minimum distance (km) between collected points.
 
 var now = Date.now();
-vat deleteIndex=[];
+var deleteIndex=[];
 for (var p in pts) {
     
     var diff = (now - pts[p].timestamp) /1000 - 978303600; // per safari

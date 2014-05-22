@@ -14,7 +14,7 @@ var now = Date.now();
 
 for (var p in pts) {
     
-    var diff = (now - pts[p].timestamp) /1000 - 978303600;
+    var diff = (now - pts[p].timestamp) /1000 - 978303600; // per safari
     console.log(now+' '+pts[p].timestamp+' '+diff);
 }
 

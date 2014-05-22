@@ -10,6 +10,13 @@ var currentLng = 0.0;       // Current longitude
 var accuracy = 0.0;         // Current accuracy in km
 var minDistance = 0.05;     // Minimum distance (km) between collected points.
 
+var now = Date.now();
+
+for (var p in pts) {
+    
+    var diff = now - pts[p].timestamp/1000;
+    console.log(now+' '+pts[p].timestamp+' '+diff);
+}
 
 function distance (lat1,lon1,lat2,lon2)
 {
@@ -47,7 +54,7 @@ function updatePosition( position ){
     if (dist < minDistance) {
         return;
     }
-    
+    console.log(position);
     pts.push(position);
     accuracy=position.coords.accuracy/500;
     currentLat=position.coords.latitude;
@@ -55,6 +62,7 @@ function updatePosition( position ){
     var pos = new Object();
     pos.coords = new Object();
     pos.timestamp = position.timestamp;
+    console.log (pos.timestamp);
 
         for (var name in position.coords ) {
             pos.coords[name]=position.coords[name];

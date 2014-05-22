@@ -14,7 +14,9 @@ var now = Date.now();
 var deleteIndex=[];
 for (var p in pts) {
     
-    var diff = (now - pts[p].timestamp) /1000 - 978303600; // per safari
+    // var diff = (now - pts[p].timestamp) /1000 - 978303600; // per safari
+    var diff = (now - pts[p].timestamp) /1000; 
+
     if (diff > 7*86400 ) {
         // prendo nota degli indici dei timestamp vecchi
         deleteIndex.push(p);

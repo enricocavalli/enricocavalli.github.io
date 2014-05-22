@@ -12,6 +12,7 @@ var minDistance = 0.05;     // Minimum distance (km) between collected points.
 
 var now = Date.now();
 var deleteIndex=[];
+alert(pts.length);
 for (var p in pts) {
     
     // var diff = (now - pts[p].timestamp) /1000 - 978303600; // per safari

@@ -14,7 +14,7 @@ var now = Date.now();
 
 for (var p in pts) {
     
-    var diff = now - pts[p].timestamp/1000;
+    var diff = (now - pts[p].timestamp) /1000 - 978303600;
     console.log(now+' '+pts[p].timestamp+' '+diff);
 }
 
@@ -62,7 +62,6 @@ function updatePosition( position ){
     var pos = new Object();
     pos.coords = new Object();
     pos.timestamp = position.timestamp;
-    console.log (pos.timestamp);
 
         for (var name in position.coords ) {
             pos.coords[name]=position.coords[name];

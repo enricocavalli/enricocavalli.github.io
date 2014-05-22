@@ -10,13 +10,15 @@ var currentLng = 0.0;       // Current longitude
 var accuracy = 0.0;         // Current accuracy in km
 var minDistance = 0.05;     // Minimum distance (km) between collected points.
 
-var now = Date.now();
+if (pts.length > 2) { //uso l'ultimo timestamp come riferimento temporale
+
+var lastTimestamp = pts[pts.length-1].timestamp;
 var deleteIndex=[];
 alert(pts.length);
 for (var p in pts) {
     
-    // var diff = (now - pts[p].timestamp) /1000 - 978303600; // per safari
-    var diff = (now - pts[p].timestamp) /1000; 
+    
+    var diff = (lastTimestamp - pts[p].timestamp) /1000; 
 
     if (diff > 7*86400 ) {
         // prendo nota degli indici dei timestamp vecchi
@@ -30,6 +32,7 @@ for (var i = deleteIndex.length - 1; i>=0 ; i--) {
     pts.splice(deleteIndex[i],1);
 }
 
+}
 
 function distance (lat1,lon1,lat2,lon2)
 {

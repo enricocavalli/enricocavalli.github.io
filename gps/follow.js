@@ -14,7 +14,7 @@ if (pts.length > 2) { //uso l'ultimo timestamp come riferimento temporale
 
 var lastTimestamp = pts[pts.length-1].timestamp;
 var deleteIndex=[];
-alert(pts.length);
+
 for (var p in pts) {
     
     

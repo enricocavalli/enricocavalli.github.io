@@ -84,17 +84,11 @@ function updatePosition( position ){
         return;
     }
 
-    pts.push(position);
+    pts.push(position); //firefox TODO
     accuracy=position.coords.accuracy/500;
     currentLat=position.coords.latitude;
     currentLng=position.coords.longitude;
-    var pos = new Object();
-    pos.coords = new Object();
-    pos.timestamp = position.timestamp;
 
-    for (var name in position.coords ) {
-        pos.coords[name]=position.coords[name];
-    }
     localStorage.setItem(localStorageKey, JSON.stringify(pts));
        /*
         jQuery.ajax({

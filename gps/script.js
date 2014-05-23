@@ -16,7 +16,7 @@ if (pts.length > 2) { //uso l'ultimo timestamp come riferimento temporale
     var deleteIndex=[];
 
     for (var p in pts) {
-        if (pts[p].timestamp != null) {
+        if (pts[p] != null && pts[p].timestamp != null) {
                 var diff = (lastTimestamp - pts[p].timestamp) /1000; 
             if (diff > 86400 ) {
                 // prendo nota degli indici dei timestamp vecchi

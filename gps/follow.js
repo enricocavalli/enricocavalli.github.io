@@ -20,7 +20,7 @@ for (var p in pts) {
     
     var diff = (lastTimestamp - pts[p].timestamp) /1000; 
 
-    if (diff > 7*86400 ) {
+    if (diff > 86400 ) {
         // prendo nota degli indici dei timestamp vecchi
         deleteIndex.push(p);
     }

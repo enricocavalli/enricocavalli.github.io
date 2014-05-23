@@ -85,6 +85,7 @@ function updatePosition( position ){
 
     localStorage.setItem(localStorageKey, JSON.stringify(pts));
        // console.log(JSON.stringify(pos));
+       /*
         jQuery.ajax({
             type: "POST", 
             url:  "http://cici.cilea.it/log.php", 
@@ -93,6 +94,7 @@ function updatePosition( position ){
             contentType: 'application/json',        
             dataType: 'json'
         });
+        */
 }
 
 function errorCallback(error) {

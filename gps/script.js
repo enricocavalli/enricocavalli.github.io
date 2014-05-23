@@ -154,7 +154,7 @@ lc.stopFollowing();
 
 for (var p in pts) {
    if (pts[p].coords.latitude !== null && pts[p].coords.longitude !== null ) 
-   markers.addLayer(L.marker([pts[p].coords.latitude,pts[p].coords.longitude]));
+   markers.addLayer(L.marker([pts[p].coords["latitude"],pts[p].coords["longitude"]]));
 }
 
  map.addLayer(markers);

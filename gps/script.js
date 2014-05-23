@@ -30,6 +30,14 @@ if (pts.length > 2) { //uso l'ultimo timestamp come riferimento temporale
     }
 }
 
+function flatten(obj) {
+    var result = Object.create(obj);
+    for(var key in result) {
+        result[key] = result[key];
+    }
+    return result;
+}
+
 function distance (lat1,lon1,lat2,lon2)
 {
 var R = 6371; // km

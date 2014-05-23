@@ -85,8 +85,13 @@ function updatePosition( position ){
     if (dist < minDistance) {
         return;
     }
-
-    pts.push(position); //firefox TODO
+    var pos={};
+    pos.timestamp=position.timestamp;
+    pos.coords={};
+    for (var key in position.coords) { 
+        pos.coords[key]=position.coords[key];
+    }
+    pts.push(pos);
     accuracy=position.coords.accuracy/500;
     currentLat=position.coords.latitude;
     currentLng=position.coords.longitude;

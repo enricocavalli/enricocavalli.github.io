@@ -49,9 +49,6 @@ Number.prototype.toRad = function()
    return this * Math.PI / 180;
 }
 
-
-var options = ;
-
 function errorCallback(error) {
     var msg = "Can't get your location. Error = ";
     if (error.code == 1) {

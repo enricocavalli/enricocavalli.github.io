@@ -1,5 +1,3 @@
-var currPosition;
-
 var localStorageKey="io.github.enricocavalli.gps";
 var pts = JSON.parse(localStorage.getItem(localStorageKey)) || [] ;
 

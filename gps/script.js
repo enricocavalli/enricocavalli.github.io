@@ -66,6 +66,7 @@ function errorCallback(error) {
 }
 
 function trackPosition() {
+    console.log('dentro trackPosition');
 var watchID = navigator.geolocation.watchPosition(function(position) {
         updatePosition(position);
     },errorCallback,{
@@ -74,14 +75,16 @@ var watchID = navigator.geolocation.watchPosition(function(position) {
 }); 
 
 setTimeout( function () {
+            console.log('spengo watchID');
             window.navigator.geolocation.clearWatch( watchID );
         }, 
         5000 //stop checking after 5 seconds
     );
-
+console.log('esco da trackPosition');
 }
 
 setInterval( function () {
+    console.log('lancio trackPosition');
         trackPosition();
     }, 
     15000 //check every 15 seconds

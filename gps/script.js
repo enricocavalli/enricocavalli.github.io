@@ -69,7 +69,7 @@ var watchID = navigator.geolocation.watchPosition(function(position) {
         updatePosition(position);
     },errorCallback,{
   enableHighAccuracy: true,
-  maximumAge: 0
+  maximumAge: 5000
 }); 
 
 function updatePosition( position ){

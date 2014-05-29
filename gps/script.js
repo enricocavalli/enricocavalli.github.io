@@ -65,12 +65,27 @@ function errorCallback(error) {
     console.warn(msg);
 }
 
+function trackPosition() {
 var watchID = navigator.geolocation.watchPosition(function(position) {
         updatePosition(position);
     },errorCallback,{
   enableHighAccuracy: true,
   maximumAge: 5000
 }); 
+
+setTimeout( function () {
+            window.navigator.geolocation.clearWatch( watchID );
+        }, 
+        5000 //stop checking after 5 seconds
+    );
+
+}
+
+setInterval( function () {
+        trackPosition();
+    }, 
+    15000 //check every 15 seconds
+);
 
 function updatePosition( position ){
 

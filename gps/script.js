@@ -69,7 +69,6 @@ var watchID = navigator.geolocation.watchPosition(function(position) {
         updatePosition(position);
     },errorCallback,{
   enableHighAccuracy: true,
-  timeout: 5000,
   maximumAge: 0
 }); 
 

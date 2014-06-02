@@ -1,0 +1,21 @@
+{
+  "name": "gps",
+  "version": "0.0.0",
+  "description": "gps and geohash grids",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "bundle": "browserify node_modules/app/main.js -o bundle.js",
+    "start": "beefy node_modules/app/main.js:bundle.js --live"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "leaflet": "^0.7.3",
+    "ngeohash": "^0.6.0"
+  },
+  "devDependencies": {
+    "beefy": "^1.1.0",
+    "browserify": "^4.1.7"
+  }
+}

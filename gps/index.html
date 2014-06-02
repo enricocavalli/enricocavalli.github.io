@@ -3,22 +3,25 @@
   <head>
     <meta charset="utf-8" />
     <meta content="width=device-width,initial-scale=1.0" name="viewport" />
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css"> 
+  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
 
-    <link rel="stylesheet" href="style.css" />
-    <link rel="stylesheet" href="//cdn.leafletjs.com/leaflet-0.7.2/leaflet.css" />
-    <link rel="stylesheet" href="//rawgithub.com/domoritz/leaflet-locatecontrol/gh-pages/src/L.Control.Locate.css" />
+    <link rel="stylesheet" href="node_modules/leaflet/dist/leaflet.css" />
+    <link rel="stylesheet" href="node_modules/app/leaflet-locatecontrol/src/L.Control.Locate.css" />
+
+    <link rel="stylesheet" href="css/style.css" />
 
     <!--[if lt IE 9]>
-      <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.2/leaflet.ie.css" />
-      <link rel="stylesheet" href="../leaflet-locatecontrol/src/L.Control.Locate.ie.css"/>
+      <link rel="stylesheet" href="node_modules/leaflet/dist/leaflet.ie.css" />
+      <link rel="stylesheet" href="vendor/leaflet-locatecontrol/src/L.Control.Locate.ie.css"/>
       <![endif]-->
   </head>
   <body>
+    <div id="menu">
+</div>
     <div id="map"></div>
 
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-    <script src="//cdn.leafletjs.com/leaflet-0.7.2/leaflet-src.js"></script>
-    <script src="//rawgithub.com/domoritz/leaflet-locatecontrol/gh-pages/src/L.Control.Locate.js" ></script>
-    <script src="script.js"></script>
+    <script src="bundle.js"></script>
   </body>
 </html>

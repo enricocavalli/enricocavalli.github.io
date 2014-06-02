@@ -1,0 +1,3 @@
+[submodule "gps/node_modules/app/leaflet-locatecontrol"]
+	path = gps/node_modules/app/leaflet-locatecontrol
+	url = https://github.com/domoritz/leaflet-locatecontrol.git

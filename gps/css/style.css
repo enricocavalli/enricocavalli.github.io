@@ -4,6 +4,10 @@ html, body {
   margin: 0;
 }
 
+#searchbar {
+  height: 40px;
+}
+
 #map {
   position: absolute;
   width: 100%;

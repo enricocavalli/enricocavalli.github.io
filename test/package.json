@@ -1,0 +1,25 @@
+{
+  "name": "geohash-test",
+  "version": "0.0.0",
+  "description": "mostra grid di geohash",
+  "main": "script.js",
+  "dependencies": {
+    "leaflet": "^0.7.3",
+    "ngeohash": "^0.6.0"
+  },
+  "devDependencies": {
+    "beefy": "^1.1.0",
+    "browserify": "^4.1.7"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "beefy script.js:bundle.js --live",
+    "bundle": "browserify script.js -o bundle.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "/Users/enricocavalli/Dropbox/git/geohash-test.git/"
+  },
+  "author": "",
+  "license": "ISC"
+}

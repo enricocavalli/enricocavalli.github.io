@@ -14,7 +14,7 @@ html, body {
   height: 100%;
 }
 
-.info .geohashinfo {
+.info, .geohashinfo {
     padding: 6px 8px;
     font: 12px/14px Arial, Helvetica, sans-serif;
     background: white;

@@ -1,7 +1,0 @@
-sudo npm install -g browserify
-sudo npm install -g beefy
-npm install --save leaflet ngeohash
-npm install --save-dev beefy browserify
-npm install
-# vedi package
-npm start

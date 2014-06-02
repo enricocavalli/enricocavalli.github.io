@@ -13,7 +13,7 @@ var geoHashControl = L.Control.extend({
 
     onAdd: function (map) {
         // create the control container with a particular class name
-        var container = L.DomUtil.create('div', 'info');
+        var container = L.DomUtil.create('div', 'geohashinfo');
         container.innerHTML = '<i class="fa fa-globe" id="gh"></i> <i class="fa fa-anchor" id="shortener"></i>';
 
         // ... initialize other DOM elements, add listeners, etc.

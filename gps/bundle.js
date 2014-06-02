@@ -97,7 +97,7 @@ for (var i =0 ; i< base32chars.length ; i++) {
     });
     
    poly.on('click',function() {
-        $('#gh').val(' '+this.geohash);
+        $('#gh').val(' '+this.geohash).html(' '+this.geohash);
         map.fitBounds(this.getLatLngs());
         
         clearPolys();

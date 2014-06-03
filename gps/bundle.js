@@ -14,7 +14,7 @@ var geoHashControl = L.Control.extend({
     onAdd: function (map) {
         // create the control container with a particular class name
         var container = L.DomUtil.create('div', 'geohashinfo');
-        container.innerHTML = '<i class="fa fa-globe fa-2x" id="gh"></i> <i class="fa fa-anchor fa-2x" id="shortener"></i>';
+        container.innerHTML = '<i class="fa fa-globe fa-2x" id="globe"></i></div><i class="fa fa-arrow-left fa-2x" id="shortener"></i><div id="gh">';
 
         // ... initialize other DOM elements, add listeners, etc.
 
@@ -25,7 +25,7 @@ var geoHashControl = L.Control.extend({
 map.addControl(new geoHashControl());
 
 
-$('#gh').click(function() {
+$('#globe').click(function() {
     $('#gh').html('').val('');
     showPrincipalHash('');
 });

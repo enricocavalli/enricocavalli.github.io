@@ -27,19 +27,10 @@ html, body {
     color: #777;
 }
 
-.geohash-label {
+.geohash-icon {
 
   color: rgba(0,0,0,0.4);
-  display: block;
-  font: 12px "Helvetica Neue", Arial, Helvetica, sans-serif;
+  font: "Helvetica Neue", Arial, Helvetica, sans-serif;
   font-weight: bold;
-  position: absolute;
-  -webkit-user-select: none;
-     -moz-user-select: none;
-      -ms-user-select: none;
-          user-select: none;
-  pointer-events: none;
-  white-space: nowrap;
-  z-index: 6;
 
 }

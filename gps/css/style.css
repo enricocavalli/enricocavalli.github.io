@@ -26,3 +26,21 @@ html, body {
     margin: 0 0 5px;
     color: #777;
 }
+
+.geohash-label {
+
+  color: rgba(0,0,235,0.5);
+  display: block;
+  font: 12px/82px "Helvetica Neue", Arial, Helvetica, sans-serif;
+  font-weight: bold;
+  
+  position: absolute;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  pointer-events: none;
+  white-space: nowrap;
+  z-index: 6;
+
+}

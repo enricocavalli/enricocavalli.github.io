@@ -29,8 +29,9 @@ html, body {
 
 .geohash-icon {
 
-  color: rgba(0,0,0,0.4);
-  font: "Helvetica Neue", Arial, Helvetica, sans-serif;
-  font-weight: bold;
+  font-weight:bold;
+  text-align:center;
+  border-radius:50%;
+  line-height:25px;
 
 }

@@ -29,6 +29,7 @@ html, body {
 
 .geohash-icon {
 
+  color: #fff;
   font-weight:bold;
   text-align:center;
   border-radius:50%;

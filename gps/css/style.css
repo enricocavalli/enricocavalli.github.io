@@ -26,3 +26,12 @@ html, body {
     margin: 0 0 5px;
     color: #777;
 }
+
+.geohash-icon {
+
+  font-weight:bold;
+  text-align:center;
+  border-radius:50%;
+  line-height:25px;
+
+}

@@ -530,7 +530,7 @@ var L = require('leaflet');
 L.Icon.Default.imagePath = 'node_modules/leaflet/dist/images/'; // adjiusted for browserify
 
 var osmUrl='//{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
-var subDomains = 'abcd';
+var subDomains = 'abc';
 //var osmUrl='http://{s}.tile.stamen.com/toner-lite/{z}/{x}/{y}.png';
 //var subDomains = 'abcd';
 var osmAttrib='Map data © <a href="http://osm.org/copyright">OpenStreetMap</a> contributors';

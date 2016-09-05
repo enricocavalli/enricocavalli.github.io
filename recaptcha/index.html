@@ -2,15 +2,16 @@
   <head>
     <title>reCAPTCHA demo: Explicit render after an onload callback</title>
     <script type="text/javascript">
+      var widgetId1;
       var onloadCallback = function() {
-        grecaptcha.render('html_element', {
+        widgetId1 = grecaptcha.render('html_element', {
           'sitekey' : '6LeRQykTAAAAAOnB7Olcgl4fIbZwZMN8WXblZv8m'
         });
       };
     </script>
   </head>
   <body>
-    <form action="javascript:alert(grecaptcha.getResponse(html_element));">
+    <form action="javascript:alert(grecaptcha.getResponse(widgetId1));">
     <div id="html_element"></div>
     <br>
     <input type="submit" value="getResponse">

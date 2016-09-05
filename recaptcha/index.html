@@ -1,99 +1,3 @@
-
-Displaying the widget
-
-This page explains how to display and customize the reCAPTCHA widget on your webpage.
-
-To display the widget, you can either:
-
-Automatically render the widget or
-Explicitly render the widget
-See Configurations to learn how to customize your widget. For example, you may want to specify the language or theme for the widget.
-
-See Verifying the user's response to check if the user successfully solved the CAPTCHA.
-
-Automatically render the reCAPTCHA widget
-
-The easiest method for rendering the reCAPTCHA widget on your page is to include the necessary JavaScript resource and a g-recaptcha tag. The g-recaptcha tag is a DIV element with class name 'g-recaptcha' and your site key in the data-sitekey attribute:
-
-<html>
-  <head>
-    <title>reCAPTCHA demo: Simple page</title>
-     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
-  </head>
-  <body>
-    <form action="?" method="POST">
-      <div class="g-recaptcha" data-sitekey="your_site_key"></div>
-      <br/>
-      <input type="submit" value="Submit">
-    </form>
-  </body>
-</html>
-The script must be loaded using the HTTPS protocol and can be included from any point on the page without restriction.
-
-Explicitly render the reCAPTCHA widget
-
-Deferring the render can be achieved by specifying your onload callback function and adding parameters to the JavaScript resource.
-
-Specify your onload callback function.  This function will get called when all the dependencies have loaded.
-<script type="text/javascript">
-  var onloadCallback = function() {
-    alert("grecaptcha is ready!");
-  };
-</script>
-Insert the Javascript resource, setting the onload parameter to the name of your onload callback function and the render parameter to explicit.
-    <script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit"
-        async defer>
-    </script>
-
-When your callback is executed, you can call the grecaptcha.render method from the Javascript API.
-Note: your onload callback function must be defined before the reCAPTCHA API loads. To ensure there are no race conditions:
-
-order your scripts with the callback first, and then reCAPTCHA
-use the async and defer parameters in the script tags
-Configuration
-
-JavaScript resource (api.js) parameters
-
-Parameter	Value	Description
-onload		Optional. The name of your callback function to be executed once all the dependencies have loaded.
-render	explicit
-onload	Optional. Whether to render the widget explicitly. Defaults to onload, which will render the widget in the first g-recaptcha tag it finds.
-hl	See language codes	Optional. Forces the widget to render in a specific language. Auto-detects the user's language if unspecified.
-g-recaptcha tag attributes and grecaptcha.render parameters
-
-g-recaptcha tag attribute	grecaptcha.render parameter	Value	Default	Description
-data-sitekey	sitekey			Your sitekey.
-data-theme	theme	dark light	light	Optional. The color theme of the widget.
-data-type	type	audio image	image	Optional. The type of CAPTCHA to serve.
-data-size	size	compact normal	normal	Optional. The size of the widget.
-data-tabindex	tabindex		0	Optional. The tabindex of the widget and challenge. If other elements in your page use tabindex, it should be set to make user navigation easier.
-data-callback	callback			Optional. The name of your callback function to be executed when the user submits a successful CAPTCHA response. The user's response, g-recaptcha-response, will be the input for your callback function.
-data-expired-callback	expired-callback			Optional. The name of your callback function to be executed when the recaptcha response expires and the user needs to solve a new CAPTCHA.
-JavaScript API
-
-Method	Description
-grecaptcha.render(
-container,
-parameters
-)	Renders the container as a reCAPTCHA widget and returns the ID of the newly created widget.
-container
-  The HTML element to render the reCAPTCHA widget.  Specify either the ID of the container (string) or the DOM element itself.
-parameters
-  An object containing parameters as key=value pairs, for example, {"sitekey": "your_site_key", "theme": "light"}. See grecaptcha.render parameters.
-grecaptcha.reset(
-opt_widget_id
-)	Resets the reCAPTCHA widget.
-opt_widget_id
-  Optional widget ID, defaults to the first widget created if unspecified.
-grecaptcha.getResponse(
-opt_widget_id
-)	Gets the response for the reCAPTCHA widget.
-opt_widget_id
-  Optional widget ID, defaults to the first widget created if unspecified.
-Examples
-
-Explicit rendering after an onload callback
-
 <html>
   <head>
     <title>reCAPTCHA demo: Explicit render after an onload callback</title>
@@ -106,11 +10,8 @@ Explicit rendering after an onload callback
     </script>
   </head>
   <body>
-    <form action="?" method="POST">
       <div id="html_element"></div>
       <br>
-      <input type="submit" value="Submit">
-    </form>
     <script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit"
         async defer>
     </script>

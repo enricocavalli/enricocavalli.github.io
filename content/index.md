@@ -12,7 +12,4 @@ title: Enrico Cavalli
 
 # Contacts
 
-
-https://gravatar.com/userimage/22052522/27c089408bfc4033f3fab8181a98c409.jpeg?size=70 https://twitter.com/enricocavalli
-
-https://twitter.com/enricocavalli
+[Contact me on Twitter](https://twitter.com/enricocavalli)

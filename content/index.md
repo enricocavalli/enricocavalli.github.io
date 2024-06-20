@@ -1,6 +1,5 @@
 ---
 title: Enrico Cavalli
-twitter: @enricocavalli
 ---
 # CTF writeups
 

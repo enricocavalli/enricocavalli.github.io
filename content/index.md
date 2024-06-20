@@ -1,4 +1,4 @@
 ---
 title: Enrico Cavalli
 ---
-First note: [[test]]
+[[Book Store writeup]]

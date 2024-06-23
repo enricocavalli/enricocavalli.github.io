@@ -70,7 +70,7 @@ So our idea is:
 
 Our collaborator receives a GET request with session cookies:
 ```
-GET /?c2Vzc2lvbj0uZUp3ZHpqRU93ekFJUU5HN2VPNkFBUnZJWlNLRHNWS3BVNkpPVmVfZXFOTmZfdkEtWlY5blhrZloxbmhkLVNqN2M1YXRvQVBQMUFnQlpOWEF3QW05VWx2TFduU1cycTNSd1BCN3lzSEpNWVJkclN1eXVCaVBVQjN1VGlvTzRjTFZRVHFKSW1XeTZWMHdFMXJhRVFWakxoWWtRUmlWdEpVYjhyN3lfR3ZxOXdkY0x5M2MuWmctbmJRLlJORFl5VmFFRUJFQnhrVnRiSzVZanJ5SEY2UQ== HTTP/1.1
+GET /?c2Vzc2l... HTTP/1.1
 ```
 
 With this cookie we have access to the book store dashboard

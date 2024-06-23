@@ -31,7 +31,7 @@ Looking at `/sitemap.xml` we notice eight categories, while in home page we only
 }
 ```
 
-We can bypass this restriction adding an `X-Forwarded-For: 127.0.0.1` agent.
+We can bypass this restriction adding an `X-Forwarded-For: 127.0.0.1` header.
 
 ![[Screenshot 2024-04-05 alle 09.18.49.png]]
 

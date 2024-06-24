@@ -39,16 +39,20 @@ Moreover, we can edit books with id 7 and 8:
 
 ![[Screenshot 2024-04-05 alle 09.19.55.png]]
 
-With this edit functionality we have a classic XXE vulnerability (that can give us /etc/hosts) and a SSRF in the coverImageUrl
-With the coverImageUrl set to `http://api/swagger.json` we discover endpoints like 
+With this edit functionality we have a classic XXE vulnerability (that can give us /etc/hosts) and a SSRF in the `coverImageUrl` parameter.
+
+By looking at `/etc/hosts` with the XXE vulnerability we discover an api host. We can do some recon there and we discover (using the SSRF)  the `http://api/swagger.json`.
+A careful study of the api functionality highlights the following endpoint.
 
 ```
 /categories/2d340d76-cc36-4554-9d40-577e164603dd/books/7/submit-ticket-request-for-review
 ```
 
-So our idea is:
+So maybe we can edit a book and trigger some bot action if we submit that book for review.
 
-1. edit book id 7 with a XSS parameter
+The plot now is:
+
+1. edit book id 7 inserting a XSS parameter:
 
 ```xml
 <book>
@@ -61,7 +65,7 @@ So our idea is:
 </book>
 ```
 
-2. edit book id 8 with 
+2. edit book id 8 asking for review of book id 7:
    
 ```xml
    <coverImageUrl>http://api/categories/2d340d76-cc36-4554-9d40-577e164603dd/books/7/submit-ticket-request-for-review</coverImageUrl>

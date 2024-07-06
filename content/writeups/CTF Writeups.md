@@ -6,6 +6,8 @@ tags:
 
 [[Book Store writeup]]
 
+[[VulnLab writeup]]
+
 [[Evil Casino Writeup.pdf]]
 
 [[Swag Shop Writeup.pdf]]

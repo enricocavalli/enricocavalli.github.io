@@ -78,7 +78,7 @@ This part can be tricky: the auth hash authenticates the information inside the 
 {"data":"eyJpZCI6MiwidXNlcm5hbWUiOiJib2Iuam9uZXMifQ==","auth":true}
 ```
 
-	Notice  that here we are using a "counterfit" token: 
+Notice  that here we are using a "counterfit" token: 
 
 ```
 GET /account/files HTTP/1.1

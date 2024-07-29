@@ -106,5 +106,6 @@ This becomes
 'a' union all select 1,F.1,F.4,4,5,6 FROM (SELECT 1,2,3,4,5,6 UNION select * FROM users)F limit 1,1-- 
 ```
 
+See https://book.hacktricks.xyz/pentesting-web/sql-injection#bypass-column-names-restriction for an explanation of this query.
 
 Go here https://tryhackme.com/r/room/injectics to play the room! 

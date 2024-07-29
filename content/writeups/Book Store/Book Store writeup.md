@@ -1,1 +1,0 @@
-see  [[Book store writeup by John Hammond]]

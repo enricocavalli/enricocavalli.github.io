@@ -14,7 +14,7 @@ default credentials.
 username=foo'||1--+&password=foo&function=login
 ```
 
-This will give access to the dashboard as user **dev**  (the first one in the users table). We can also log in as admin but from `login.php` we don't get the flag.
+This will give access to the dashboard as user **dev**  (the first one in the users table). We can also log in as admin but we won't be able to get the flag this way.
 
 ```
 username=foo'||1+LIMIT+0,1--+&password=foo&function=login     ---> login as dev

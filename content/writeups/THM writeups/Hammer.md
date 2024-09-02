@@ -15,7 +15,7 @@ so we start fuzzing for  `http://MACHINE_IP:1337/hmr_FUZZ` and soon we find a `h
 logs                    [Status: 301, Size: 322, Words: 20, Lines: 10, Duration: 43ms]
 ```
 
-There we find a pointer in an error log to an email address:
+A log file in the hmr_logs directory reveals an email address that will result valid for password reset
 
 ```
 [Mon Aug 19 12:06:18.432109 2024] [authz_core:error] [pid 12351:tid 139999999999993] [client 192.168.1.30:40232] AH01617: user tester@hammer.thm: authentication failure for "/admin-login": Invalid email address

@@ -34,6 +34,7 @@ we set recevory_code as placeholder for our payloads and try all numbers from 0 
 
 
 ![[Screenshot 2024-08-31 alle 10.06.16 1.png]]
+
 but soon we start getting responses where we are rate limited:
 
 ![[Screenshot 2024-08-31 alle 10.06.29.png]]

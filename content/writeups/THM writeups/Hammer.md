@@ -50,10 +50,12 @@ It may be possible that we have to restart the password reset from scratch (beca
 At some point we will eventually get the correct PIN and so our session will be valid for password reset:
 
 ![[Screenshot 2024-08-31 alle 10.13.08.png]]
+
 so we go ahead and change the password. We login and we get very limited command execution along with the first flag.
 
 
 ![[Screenshot 2024-08-31 alle 10.14.14.png]]
+
 Authentication and authorization here is done with JWT: 
 
 ```json
@@ -77,6 +79,7 @@ Authentication and authorization here is done with JWT:
   }
 }
 ```
+
 Probably we have to give us admin role.
 
 We found a way to proceed here: https://book.hacktricks.xyz/pentesting-web/hacking-jwt-json-web-tokens#path-traversal-with-kid

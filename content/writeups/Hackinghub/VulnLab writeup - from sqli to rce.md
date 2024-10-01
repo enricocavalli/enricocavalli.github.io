@@ -4,7 +4,7 @@ draft: false
 tags:
   - sqli
   - directory-list
-  - file-include
+  - LFI
 ---
 ![[Screenshot 2024-07-06 alle 16.26.55.png]]
 Upon browsing our VulnLab instance we immediately notice a request to `/thumbnail?file=bg2.jpg`. The first thing that comes to mind is of course path traversal. In fact if we request `/etc/passwd` with a classic payload we get an error message:

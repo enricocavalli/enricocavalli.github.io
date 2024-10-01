@@ -2,6 +2,8 @@
 title: Book store writeup by John Hammond
 draft: false
 tags:
+  - sqli
+  - xxe
 ---
 In this challenge by John Hammond we are presented with a web site where we can browse book by category, author, and so on.
 

@@ -2,6 +2,9 @@
 title: Hammer Writeup
 draft: false
 tags:
+  - brute-force
+  - rate-limit
+  - JWT
 ---
 We found a website on port 1337. An html comment in home page states that
 

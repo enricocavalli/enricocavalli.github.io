@@ -44,9 +44,20 @@ images.forEach(img => {
 
 // Add event listener for clicking anywhere outside the image to close the lightbox
 document.addEventListener('click', (e) => {
-  const activeImage = document.querySelector('img.lightbox');
-  if (activeImage && !e.target.closest('img.lightbox')) {
-    closeLightbox();
+  const target = e.target as HTMLElement;
+
+  // Check if the clicked element is an img
+  if (target.tagName === 'IMG' && !target.classList.contains('Logo')) {
+    e.stopPropagation();
+
+    // If the image is already in lightbox mode, close it
+    if (target.classList.contains('lightbox')) {
+      closeLightbox();
+    } else {
+      openLightbox(target as HTMLImageElement);
+    }
+  } else if (!e.target.closest('img.lightbox')) {
+    closeLightbox(); // Close the lightbox if clicking outside
   }
 });
 

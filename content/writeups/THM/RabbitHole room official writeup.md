@@ -1,4 +1,9 @@
-
+---
+title: RabbitHole room official writeup
+draft: false
+tags:
+  - sqli
+---
 # The main idea
 
 Main room idea is centered around a second order sql injection. By placing SQL payloads into username, we can dump the database. We have some restrictions in place, because extracted data is truncated to 16 chars.

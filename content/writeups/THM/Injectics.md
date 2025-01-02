@@ -3,6 +3,7 @@ title: Injectics
 draft: false
 tags:
   - sqli
+date: 2024-10-01
 ---
 
 Main idea of this room is around SQL injection during UPDATE statements. In particular the `edit_leaderboard.php` endpoint

@@ -5,6 +5,7 @@ tags:
   - brute-force
   - rate-limit
   - JWT
+date: 2024-10-01
 ---
 We found a website on port 1337. An html comment in home page states that
 

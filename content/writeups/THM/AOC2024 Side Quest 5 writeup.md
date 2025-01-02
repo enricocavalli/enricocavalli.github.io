@@ -17,6 +17,8 @@ This allows us to exploit a dependency confusion attack by changing the registry
 A special thanks to all my team mates (aquinas, 0xb0b, shadow_absorber, Jayy, Scrubz).
 The key to unlock the challenge can be found by analyzing the binary from Day19 with ghidra. See 0xb0b writeup (https://0xb0b.gitbook.io/writeups/tryhackme/2024/advent-of-cyber-24-side-quest/t5-an-avalanche-of-web-apps) for a detailed description about how to extract the keycard.
 
+Play all the AOC2024 Side Quests here: https://tryhackme.com/r/room/adventofcyber24sidequest
+
 ## Recon
 
 An nmap scan reveals these open ports:

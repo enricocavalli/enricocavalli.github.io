@@ -1,5 +1,5 @@
 ---
-title: AOC2024-SQ5
+title: AOC2024 Side Quest 5 writeup
 draft: false
 tags:
   - rce

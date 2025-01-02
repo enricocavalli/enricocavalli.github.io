@@ -7,6 +7,7 @@ tags:
   - ssti
   - dependecy-confusion
   - dns
+  - JWT
 date: 2025-01-01
 ---
 ## Summary

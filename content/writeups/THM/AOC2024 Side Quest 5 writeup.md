@@ -333,7 +333,7 @@ tryKeyboard: true,
 };
 ```
 
-The endpoints need a JWT authentication, but luckily for us it is done with public key infrastructure and the admin app grabs the the JWKS from  a place that is actually under our control
+The endpoints need a JWT authentication, but luckily for us it is done with public key infrastructure and the admin app grabs the  JWKS from  a place that is actually under our control
 
 ```javascript
 async function fetchJWKS() {

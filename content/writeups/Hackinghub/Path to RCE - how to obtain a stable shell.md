@@ -36,4 +36,4 @@ thread.start()
 thread.join()
 ```
 
-I think that this causes the thread that called join to block until the thread we launch with `new Thread` dies. Here we are sleeping for an hour so finally we have plenty of time to look around with a stable reverse shell!
+I think that this causes the thread that called join to block until the thread we launched with `new Thread` dies. Inside the launched thread  we are sleeping for an hour so finally we have plenty of time to look around with a stable reverse shell!

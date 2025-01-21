@@ -4,7 +4,7 @@ draft: false
 tags:
   - rce
   - groovy
-date: 2022-01-18
+date: 2025-01-18
 ---
 I found this lab from hackinghub.io pretty interesting (https://app.hackinghub.io/hubs/path-to-rce). I am not going to discuss the details as they are already very well presented in the original article https://medium.com/@HX007/a-journey-of-limited-path-traversal-to-rce-with-40-000-bounty-fc63c89576ea: I will just focus on ways to obtain a stable reverse shell.
 

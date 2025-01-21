@@ -1,7 +1,8 @@
 ---
 title: Other HackingHub.io writeups
 draft: false
-tags:
+tags: 
+date: 2024-09-01
 ---
 [[Evil Casino Writeup.pdf]]
 

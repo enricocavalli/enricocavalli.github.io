@@ -3,6 +3,7 @@ title: RabbitHole room official writeup
 draft: false
 tags:
   - sqli
+date: 2024-10-25
 ---
 # The main idea
 

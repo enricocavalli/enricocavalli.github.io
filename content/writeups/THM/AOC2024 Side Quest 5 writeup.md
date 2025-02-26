@@ -3,7 +3,7 @@ title: AOC2024 Side Quest 5 writeup
 draft: false
 tags:
   - rce
-  - os-command-injection
+  - command-injection
   - ssti
   - dependecy-confusion
   - dns

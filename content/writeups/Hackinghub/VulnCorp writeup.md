@@ -9,7 +9,7 @@ date: 2025-02-25
 ---
 # From initial recon to config file
 
-We start with an OSINT domain `vulncorp.co.uk` and out lab instance `z4czp9fy.vulncorp.co.uk`. 
+We start with an OSINT domain `vulncorp.co.uk` and our lab instance `z4czp9fy.vulncorp.co.uk`. 
 
 
 ```bash

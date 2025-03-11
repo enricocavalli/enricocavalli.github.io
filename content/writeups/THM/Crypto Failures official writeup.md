@@ -143,7 +143,13 @@ KwjvAKdvx1p9s
 
 Incrementing User-Agent length by one character, now last block will be the encryption of last two characters of the secret_key (and we already know the last character), so we can easily determine the other one. We can proceed in this way and get all 8 last characters of secret key. Adjusting the algorithm to find the entire key is left as an exercise to the reader :)
 
-Just kidding. Here is a possible python implementation to solve the problem:
+Just kidding. Here is a possible python implementation to solve the problem (you could run it with python3 up to version 3.12 since `crypt` was deprecated in python 3.13). If you don't wont to mess with multiple python versions you can just use docker:
+
+```bash
+docker pull python:3.12
+docker run -it -v $PWD:/host --rm python:3.12 bash
+```
+
 
 ```python
 #!/usr/bin/env python3
@@ -217,3 +223,5 @@ print(my_headers)
 r=session.get(url,headers=my_headers)
 print(r.text)
 ```
+
+I found 

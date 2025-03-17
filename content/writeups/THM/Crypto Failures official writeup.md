@@ -223,5 +223,3 @@ print(my_headers)
 r=session.get(url,headers=my_headers)
 print(r.text)
 ```
-
-I found 

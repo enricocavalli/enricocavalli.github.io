@@ -144,4 +144,8 @@ A totally unintended root (again pointed out by Jaxafed) that will give flag rea
 Include /root/root.txt
 ```
 
-You will get the flag as an error message upon starting apache. This one was totally my fault :)
+You will get the flag as an error message upon starting apache. This one was totally my fault :) In hindsight I should have done something like this:
+
+```
+# this is the flag THM{...}
+```

@@ -222,7 +222,7 @@ First working payload was this inside the JWT:
 }
 ```
 
-The find command inside backticks look for directories called images (we know that at least one must exist), and copies the secret flag there. A more structured and automated approach is in the python code below. First we find the 
+The find command inside backticks look for directories called images (we know that at least one must exist), and copies the secret flag there. A more structured and automated approach is in the python code below:
 
 ```python
 import jwt
@@ -303,7 +303,7 @@ while True:
 
 ## note about networking
 
-If network connection to al least localhost were allowed, another possibility would have been using a payload like
+If network connection to at least localhost were allowed, another possibility would have been using a payload like
 
 
 ```json

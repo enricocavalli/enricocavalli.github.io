@@ -5,7 +5,6 @@ tags:
   - sqli
   - command-injection
   - path-traversal
-  - LFI
 date: 2025-05-24
 ---
 # Summary

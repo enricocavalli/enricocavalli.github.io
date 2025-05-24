@@ -1,6 +1,6 @@
 ---
 title: Starcraft Card Collector
-draft: true
+draft: false
 tags:
   - sqli
   - LFI

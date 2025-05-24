@@ -12,7 +12,7 @@ The technique is very well described, way better that I could do, on PortSwigger
 
 # The hint
 
-Fuzzing or whatever here wont lead you anywhere. There is a subtle hint about what has to be done in `/static/sytle.css` 
+Fuzzing or whatever here won't take you anywhere. There is a subtle hint about what has to be done in `/static/sytle.css` 
 
 ```css
 * Subtle Falling Code Effect (More subtle than snowflakes) */

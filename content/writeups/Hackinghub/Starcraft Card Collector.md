@@ -3,8 +3,9 @@ title: Starcraft Card Collector
 draft: false
 tags:
   - sqli
-  - LFI
   - command-injection
+  - path-traversal
+  - LFI
 date: 2025-05-24
 ---
 # Summary
@@ -17,7 +18,7 @@ Fuzzing will not help much here because of the configuration of the nginx fronte
 - `search.php` that will turn out to be vulnerable to SQL injection
 - `renderBWScene.php` that is vulnerable to path traversal and allows us to read or discover files inside the web root
 
-# LFI on `renderBWScene.php`
+# Path traversal on `renderBWScene.php`
 
 By calling `/renderBWScene.php?number=.` you get this error
 
@@ -28,7 +29,7 @@ By calling `/renderBWScene.php?number=.` you get this error
 
 while `/renderBWScene.php?number=./1` renders the image number 1 as the original call without `./`
 
-This allows us to grab the source code of all the application by doing for instance `/renderBWScene.php?number=../../index.php`
+This confirms path traversal and  allows us to grab the source code of all the application by doing for instance `/renderBWScene.php?number=../../index.php`
 We can also fuzz for files and discover a secret admin panel 
 
 ```

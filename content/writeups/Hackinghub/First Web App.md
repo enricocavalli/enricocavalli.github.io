@@ -10,7 +10,7 @@ date: 2025-05-24
 
 It's pretty easy to see that we have SSTI (Server Side Template Injection) on the username parameter. 
 The templating engine is EJS. The difficulty here is that many useful keywords like `process`, `global`, `require` and possibly many others are filtered.
-The trick is to use some javascript obfuscation so for instance instead of `"process"` we an use `"pro"+"cess"` where the `+` sign is string concatenation.
+The trick is to use some javascript obfuscation so for instance instead of `"process"` we can use `"pro"+"cess"` where the `+` sign is string concatenation.
 
 A working payload is the following:
 

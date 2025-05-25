@@ -37,7 +37,7 @@ User-agent: *
 Disallow: /Sup3r_secr3t_administrator_panel.php
 ```
 
-That admin panel is a juicy target because by looking at the source code we clearly see that it is vulnerable to os command injection because the user input from `$_GET["query"]` is used completely unsanitized into a shell command:
+That admin panel is a juicy target. By looking at the source code we clearly see that it is vulnerable to os command injection because the user input from `$_GET["query"]` is used completely unsanitized into a shell command:
 
 ```php
 //[...SNIP...]

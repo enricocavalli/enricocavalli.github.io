@@ -4,7 +4,7 @@ draft: false
 tags:
   - sqli
   - directory-list
-  - LFI
+  - lfi
 date: 2024-10-01
 ---
 ![[Screenshot 2024-07-06 alle 16.26.55.png]]

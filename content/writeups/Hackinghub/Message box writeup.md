@@ -1,7 +1,9 @@
 ---
 title: Message Box writeup
 draft: false
-tags: 
+tags:
+  - lfi
+  - idor
 date: 2024-10-01
 ---
 Login page responds with different result if username is valid or username does not exists. Fuzzing with very basic usernames and passwords wordlists we soon find a bunch of username

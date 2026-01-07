@@ -3,7 +3,7 @@ title: Moebius room official writeup
 draft: false
 tags:
   - sqli
-  - LFI
+  - lfi
   - php
 date: 2025-04-28
 ---

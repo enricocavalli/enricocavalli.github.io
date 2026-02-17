@@ -1,4 +1,10 @@
- 
+---
+title: It's Always DNS
+draft: false
+tags:
+  - sqli
+date: 2026-02-17
+---
 ## Summary
 
 We first need to register into a web application where we can validate our own public domain name. Once domain is validated, the app will start  to monitor our website.

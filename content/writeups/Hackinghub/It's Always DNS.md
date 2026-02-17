@@ -3,6 +3,7 @@ title: It's Always DNS
 draft: false
 tags:
   - sqli
+  - command-injection
 date: 2026-02-17
 ---
 ## Summary
